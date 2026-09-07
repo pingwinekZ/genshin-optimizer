@@ -1,7 +1,9 @@
 {
-  "coreCond": "When ordering Drusilla or Anastella to attack",
-  "abilityCond": "When Shocked enemies are on the field",
-  "m1Cond": "Character within 10m",
-  "m1_buff_": "Core PEN Ratio Buff Increase",
-  "potentialCond": "While the Core Passive buff is active"
+  "minionsOnFieldCond": "Minions on Field · PEN Ratio",
+  "shockedEnemyCond": "Shocked Enemy · Electric DMG",
+  "activeCharCond": "Enter Combat or Switch In · DMG",
+  "minionsOnFieldEnerRegenCond": "Minions on Field · Energy Regen",
+  "exSpecialChainUltHitCond": "EX Special / Chain / Ultimate Hit · Electric DMG",
+  "potentialMinionsOnFieldCond": "Minions on Field · ATK & DEF",
+  "potential_pen_header": "PEN Ratio"
 }

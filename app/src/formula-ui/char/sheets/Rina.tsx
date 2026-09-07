@@ -1,25 +1,74 @@
 import type { CharacterKey } from '../../../consts'
 import { Rina } from '../../../formula'
-import { mappedStats } from '../../../stats'
-import { st, trans } from '../../util'
-import { createBaseSheet, fieldForBuff } from '../sheetUtil'
+import { GameDesc, GameDescSlice } from '../../../i18n'
+import { trans } from '../../util'
+import {
+  AbilityBodyText,
+  CoreGameDesc,
+  createBaseSheet,
+  fieldForBuff,
+  PrefixedLine,
+  useEffectiveMindscape,
+} from '../sheetUtil'
 
 const key: CharacterKey = 'Rina'
 const [, ch] = trans('char', key)
 const cond = Rina.conditionals
 const buff = Rina.buffs
-const dm = mappedStats.char[key]
+
+function CoreDescription() {
+  const mindscape = useEffectiveMindscape(key)
+  return (
+    <>
+      <CoreGameDesc characterKey={key} />
+      <PrefixedLine prefix="M1" dimmed={mindscape < 1}>
+        <GameDesc ns="char_Rina_gen" key18="mindscapes.1.desc.1" />
+      </PrefixedLine>
+    </>
+  )
+}
+
+function AbilityDescription() {
+  return (
+    <>
+      <GameDesc ns="char_Rina_gen" key18="ability.desc.0" />
+      <AbilityBodyText characterKey={key}>
+        <GameDescSlice
+          ns="char_Rina_gen"
+          key18="ability.desc.1"
+          from="When <ct color=#2EB6FF>Shocked</ct> enemies are on the field"
+          to="increases by 10%"
+        />
+      </AbilityBodyText>
+    </>
+  )
+}
+
+function PotentialDescription() {
+  return <GameDesc ns="char_Rina_gen" key18="potential.desc.6" />
+}
+
+function PotentialAtkDefDescription() {
+  return (
+    <GameDescSlice
+      ns="char_Rina_gen"
+      key18="potential.desc.6"
+      from="While the buff gained from"
+      to="468 DEF"
+    />
+  )
+}
 
 const sheet = createBaseSheet(key, {
   core: [
     {
       type: 'conditional',
       conditional: {
-        label: ch('coreCond'),
-        description:
-          "The entire squad gains bonus PEN Ratio while Rina's minions are on the field.",
+        label: ch('minionsOnFieldCond'),
+        description: <CoreDescription />,
         metadata: cond.minions_onField,
         fields: [fieldForBuff(buff.core_pen_)],
+        linked: ['minions_onField_enerRegen', 'potential_minions_onField'],
       },
     },
   ],
@@ -27,9 +76,8 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: ch('abilityCond'),
-        description:
-          "Increases the squad's Electric DMG while a Shocked enemy is on the field.",
+        label: ch('shockedEnemyCond'),
+        description: <AbilityDescription />,
         metadata: cond.shocked_enemy,
         fields: [fieldForBuff(buff.ability_electric_dmg_)],
       },
@@ -37,35 +85,22 @@ const sheet = createBaseSheet(key, {
   ],
   potential: [
     {
-      type: 'conditional',
-      conditional: {
-        label: ch('potentialCond'),
-        description:
-          "Increases PEN Ratio. While the Core Passive buff is active, the squad gains ATK and DEF for every 1% of Rina's PEN Ratio.",
-        metadata: cond.minions_onField,
-        fields: [
-          fieldForBuff(buff.potential_pen_),
-          fieldForBuff(buff.potential_atk_),
-          fieldForBuff(buff.potential_def_),
-        ],
-      },
+      type: 'fields',
+      header: { icon: null, text: ch('potential_pen_header') },
+      description: <PotentialDescription />,
+      fields: [fieldForBuff(buff.potential_pen_)],
     },
-  ],
-  m1: [
     {
       type: 'conditional',
       conditional: {
-        label: ch('m1Cond'),
-        description:
-          'Increases the Core PEN Ratio bonus when the squad member is within 10 meters of Rina.',
-        metadata: cond.within_10m,
+        label: ch('potentialMinionsOnFieldCond'),
+        description: <PotentialAtkDefDescription />,
+        metadata: cond.potential_minions_onField,
         fields: [
-          {
-            title: ch('m1_buff_'),
-            fieldValue: dm.m1.core_buff_ * 100,
-            unit: '%',
-          },
+          fieldForBuff(buff.potential_atk_),
+          fieldForBuff(buff.potential_def_),
         ],
+        linked: ['minions_onField', 'minions_onField_enerRegen'],
       },
     },
   ],
@@ -73,9 +108,8 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: st('enterCombatOrSwitchIn'),
-        description:
-          'Grants bonus Common DMG upon entering combat or switching in.',
+        label: ch('activeCharCond'),
+        description: <GameDesc ns="char_Rina_gen" key18="mindscapes.2.desc" />,
         metadata: cond.active_char,
         fields: [fieldForBuff(buff.m2_common_dmg_)],
       },
@@ -85,11 +119,11 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: ch('coreCond'),
-        description:
-          "Rina's Energy Regen increases while her minions are on the field.",
-        metadata: cond.minions_onField,
+        label: ch('minionsOnFieldEnerRegenCond'),
+        description: <GameDesc ns="char_Rina_gen" key18="mindscapes.4.desc" />,
+        metadata: cond.minions_onField_enerRegen,
         fields: [fieldForBuff(buff.m4_enerRegen)],
+        linked: ['minions_onField', 'potential_minions_onField'],
       },
     },
   ],
@@ -97,13 +131,8 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: st('uponLaunch.3', {
-          val1: '$t(skills.exSpecial)',
-          val2: '$t(skills.chain)',
-          val3: '$t(skills.ult)',
-        }),
-        description:
-          "Increases the squad's Electric DMG after hitting an enemy with an EX Special Attack, Chain Attack, or Ultimate.",
+        label: ch('exSpecialChainUltHitCond'),
+        description: <GameDesc ns="char_Rina_gen" key18="mindscapes.6.desc" />,
         metadata: cond.exSpecial_chain_ult_hit,
         fields: [fieldForBuff(buff.m6_electric_dmg_)],
       },

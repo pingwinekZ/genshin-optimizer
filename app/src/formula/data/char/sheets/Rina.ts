@@ -33,14 +33,14 @@ const { char } = own
 
 const {
   minions_onField,
+  minions_onField_enerRegen,
+  potential_minions_onField,
   shocked_enemy,
-  within_10m,
   active_char,
   exSpecial_chain_ult_hit,
 } = allBoolConditionals(key, undefined, {
-  within_10m: 1,
   active_char: 2,
-  minions_onField: 4,
+  minions_onField_enerRegen: 4,
   exSpecial_chain_ult_hit: 6,
 })
 
@@ -88,21 +88,11 @@ const sheet = register(
       minions_onField.ifOn(
         min(
           prod(
-            cmpGE(
-              char.mindscape,
-              1,
-              within_10m.ifOn(percent(dm.m1.core_buff_), percent(1)),
-              percent(1)
-            ),
+            cmpGE(char.mindscape, 1, percent(dm.m1.core_buff_), percent(1)),
             percent(dm.core.max_pen_)
           ),
           prod(
-            cmpGE(
-              char.mindscape,
-              1,
-              within_10m.ifOn(percent(dm.m1.core_buff_), percent(1)),
-              percent(1)
-            ),
+            cmpGE(char.mindscape, 1, percent(dm.m1.core_buff_), percent(1)),
             sum(
               prod(own.final.pen_, percent(dm.core.pen_scaling)),
               percent(subscript(char.core, dm.core.pen_))
@@ -138,7 +128,11 @@ const sheet = register(
   registerBuff(
     'm4_enerRegen',
     ownBuff.combat.enerRegen.add(
-      cmpGE(char.mindscape, 4, minions_onField.ifOn(percent(dm.m4.enerRegen)))
+      cmpGE(
+        char.mindscape,
+        4,
+        minions_onField_enerRegen.ifOn(percent(dm.m4.enerRegen))
+      )
     )
   ),
   registerBuff(
@@ -160,7 +154,7 @@ const sheet = register(
   registerBuff(
     'potential_atk_',
     teamBuff.combat.atk.add(
-      minions_onField.ifOn(
+      potential_minions_onField.ifOn(
         min(
           prod(own.final.pen_, constant(100), dm.potential.atk_per_pen[6]),
           dm.potential.max_atk[6]
@@ -173,7 +167,7 @@ const sheet = register(
   registerBuff(
     'potential_def_',
     teamBuff.combat.def.add(
-      minions_onField.ifOn(
+      potential_minions_onField.ifOn(
         min(
           prod(own.final.pen_, constant(100), dm.potential.def_per_pen[6]),
           dm.potential.max_def[6]

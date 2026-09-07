@@ -55,6 +55,10 @@ const dm = {
   m6: {
     dmg: data_gen.mindscapeParams[5][0],
   },
+  potential: {
+    laceration_dmg_: data_gen.potentialParams[0],
+    crit_dmg_: data_gen.potentialParams[1],
+  },
 } as const
 
 export default dm

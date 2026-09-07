@@ -58,18 +58,6 @@ export const buffs = {
       sheet: 'Claret',
       name: 'ability_remnant_laceration_',
     },
-    team: false,
-  },
-  team_ability_remnant_laceration_: {
-    sheet: 'Claret',
-    name: 'team_ability_remnant_laceration_',
-    tag: {
-      et: 'display',
-      qt: 'combat',
-      q: 'laceration_dmg_',
-      sheet: 'Claret',
-      name: 'team_ability_remnant_laceration_',
-    },
     team: true,
   },
   m1_gashBuildup_: {

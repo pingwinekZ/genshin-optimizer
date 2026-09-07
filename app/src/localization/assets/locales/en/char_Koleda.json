@@ -1,5 +1,15 @@
 {
-  "core_dazeInc_": "Enhanced Basic Attack Daze Increase",
-  "m1Cond": "Special or EX Special used quickly",
-  "m4Cond": "When consuming Furnace Fire to use Enhanced Basic Attack"
+  "core_header": "Daze",
+  "core_exSpecial_dazeInc_": "EX Special Attack Daze",
+  "core_basic_dazeInc_": "Enhanced Basic Attack Daze",
+  "exSpecialDebuffCond": "EX Special Hit (Stunned) · Chain DMG",
+  "quickUseCond": "Quick Special/EX Special · Daze",
+  "chargeCond": "Furnace Fire Consumed · Chain & Ult DMG",
+  "m1_special_dazeInc_": "Special Attack Daze",
+  "m1_exSpecial_dazeInc_": "EX Special Attack Daze",
+  "m4_chain_dmg_": "Chain Attack DMG",
+  "m4_ult_dmg_": "Ultimate DMG",
+  "potential_header": "Laceration & CRIT DMG",
+  "m6_additional_dmg": "Additional DMG",
+  "m6_dmg": "Additional Explosion DMG"
 }
