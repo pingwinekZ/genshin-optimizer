@@ -128,16 +128,12 @@ export type AnomalyDamageKey = (typeof allAnomalyDmgKeys)[number]
  * - Rupture: "Automatic Adrenaline Accumulation" (AAA)
  * - Others:  "Energy Regen" (ER)
  */
-export function getEnerRegenLabel(
-  specialty?: string | null
-): string {
+export function getEnerRegenLabel(specialty?: string | null): string {
   if (specialty === 'armorer') return 'Automatic Sharpness Accumulation'
   if (specialty === 'rupture') return 'Automatic Adrenaline Accumulation'
   return 'Energy Regen'
 }
-export function getEnerRegenShortLabel(
-  specialty?: string | null
-): string {
+export function getEnerRegenShortLabel(specialty?: string | null): string {
   if (specialty === 'armorer') return 'ASA'
   if (specialty === 'rupture') return 'AAA'
   return 'ER'
