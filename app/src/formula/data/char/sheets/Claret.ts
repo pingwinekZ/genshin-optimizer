@@ -1,4 +1,5 @@
 import {
+  cmpEq,
   cmpGE,
   constant,
   type NumNode,
@@ -16,6 +17,7 @@ import {
   percent,
   register,
   registerBuff,
+  target,
   team,
   teamBuff,
 } from '../../util'
@@ -45,15 +47,15 @@ const { m2_crimsonInscription } = allBoolConditionals(key, undefined, {
 const baseTag = getBaseTag(data_gen)
 
 // Team condition for Additional Ability: Stun or Armorer or same attribute (electric)
-// team count includes self, so electric count >=2 means another electric teammate
+// Copied from Velina: sum counts including self, need >=3 (self contributes armorer+electric=2)
 const ability_teamCheck = (node: NumNode) =>
   cmpGE(
     sum(
       team.common.count.withSpecialty('stun'),
       team.common.count.withSpecialty('armorer'),
-      cmpGE(team.common.count.electric, 2, 1)
+      team.common.count.electric
     ),
-    1,
+    3,
     node
   )
 
@@ -75,12 +77,13 @@ const core_perfectDodge_dmg_ = ownBuff.combat.common_dmg_.add(
 
 // Additional Ability: Remnant Edge — Laceration DMG +25% for all Armorers
 // Triggered when Claret or squad member triggers Maim; gated by team condition
-const ability_remnant_laceration_ = ownBuff.combat.laceration_dmg_.add(
-  ability_teamCheck(remnantEdge.ifOn(percent(dm.ability.lacerationDmg_)))
-)
-// Also as teamBuff for other Armorers in squad
-const team_ability_remnant_laceration_ = teamBuff.combat.laceration_dmg_.add(
-  ability_teamCheck(remnantEdge.ifOn(percent(dm.ability.lacerationDmg_)))
+// Single team buff (applies to all armorers including self) — fixes double application
+const ability_remnant_laceration_ = teamBuff.combat.laceration_dmg_.add(
+  cmpEq(
+    target.char.specialty,
+    'armorer',
+    ability_teamCheck(remnantEdge.ifOn(percent(dm.ability.lacerationDmg_)))
+  )
 )
 
 // M1: When Claret triggers Laceration, Gash Buildup +20% and Maim multiplier to 130% — passive (mindscape only)
@@ -200,10 +203,9 @@ const sheet = register(
   registerBuff('core_crimson_crit_', core_crimson_crit_),
   registerBuff('core_crimson_gashBuildup_', core_crimson_gashBuildup_),
   registerBuff('core_perfectDodge_dmg_', core_perfectDodge_dmg_),
-  registerBuff('ability_remnant_laceration_', ability_remnant_laceration_),
   registerBuff(
-    'team_ability_remnant_laceration_',
-    team_ability_remnant_laceration_,
+    'ability_remnant_laceration_',
+    ability_remnant_laceration_,
     undefined,
     true
   ),

@@ -121,6 +121,24 @@ export const allAnomalyDmgKeys = [
 ] as const
 export type AnomalyDamageKey = (typeof allAnomalyDmgKeys)[number]
 
+/**
+ * Returns the display name for the Energy Regen stat, which is renamed
+ * for specialty characters:
+ * - Armorer: "Automatic Sharpness Accumulation" (ASA)
+ * - Rupture: "Automatic Adrenaline Accumulation" (AAA)
+ * - Others:  "Energy Regen" (ER)
+ */
+export function getEnerRegenLabel(specialty?: string | null): string {
+  if (specialty === 'armorer') return 'Automatic Sharpness Accumulation'
+  if (specialty === 'rupture') return 'Automatic Adrenaline Accumulation'
+  return 'Energy Regen'
+}
+export function getEnerRegenShortLabel(specialty?: string | null): string {
+  if (specialty === 'armorer') return 'ASA'
+  if (specialty === 'rupture') return 'AAA'
+  return 'ER'
+}
+
 export const statKeyTextMap: Partial<Record<string, string>> = {
   hp_base: 'Base HP',
   atk_base: 'Base ATK',

@@ -433,7 +433,12 @@ function PreviewContent({
                 color: '#fff',
               }}
             >
-              <CharacterStatSummary stats={stats} attribute={attribute} zebra />
+              <CharacterStatSummary
+                stats={stats}
+                attribute={attribute}
+                specialty={charStat.specialty}
+                zebra
+              />
             </Box>
 
             {/* Score - Hoyolab style rating badge */}

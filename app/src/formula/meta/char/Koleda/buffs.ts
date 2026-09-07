@@ -1,5 +1,18 @@
 // WARNING: Generated file, do not modify
 export const buffs = {
+  m6_dmg: {
+    sheet: 'Koleda',
+    name: 'm6_dmg',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'dmg_',
+      sheet: 'Koleda',
+      damageType1: 'elemental',
+      name: 'm6_dmg',
+    },
+    team: false,
+  },
   core_exSpecial_dazeInc_: {
     sheet: 'Koleda',
     name: 'core_exSpecial_dazeInc_',
@@ -13,15 +26,16 @@ export const buffs = {
     },
     team: false,
   },
-  core_dazeInc_: {
+  core_basic_dazeInc_: {
     sheet: 'Koleda',
-    name: 'core_dazeInc_',
+    name: 'core_basic_dazeInc_',
     tag: {
       et: 'display',
       qt: 'combat',
       q: 'dazeInc_',
       sheet: 'Koleda',
-      name: 'core_dazeInc_',
+      damageType1: 'basic',
+      name: 'core_basic_dazeInc_',
     },
     team: false,
   },
@@ -89,5 +103,29 @@ export const buffs = {
       name: 'm4_ult_dmg_',
     },
     team: false,
+  },
+  potential_laceration_dmg_: {
+    sheet: 'Koleda',
+    name: 'potential_laceration_dmg_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'laceration_dmg_',
+      sheet: 'Koleda',
+      name: 'potential_laceration_dmg_',
+    },
+    team: true,
+  },
+  potential_crit_dmg_: {
+    sheet: 'Koleda',
+    name: 'potential_crit_dmg_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'crit_dmg_',
+      sheet: 'Koleda',
+      name: 'potential_crit_dmg_',
+    },
+    team: true,
   },
 } as const

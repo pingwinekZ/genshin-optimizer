@@ -1,5 +1,5 @@
 import { Flex, Text } from '@mantine/core'
-import { statKeyTextMap } from '../../consts'
+import { getEnerRegenLabel, statKeyTextMap } from '../../consts'
 import { StatIcon } from '../../svgicons'
 import classes from './CharacterStatSummary.module.css'
 import { StatText } from './StatText'
@@ -7,10 +7,12 @@ import { StatText } from './StatText'
 export function CharacterStatSummary({
   stats,
   attribute,
+  specialty,
   zebra = false,
 }: {
   stats: Record<string, number> | null
   attribute?: string
+  specialty?: string | null
   zebra?: boolean
 }) {
   const dmgDisplayKey = attribute ? `${attribute}_dmg_` : 'dmg_'
@@ -31,7 +33,11 @@ export function CharacterStatSummary({
         <CharacterStatRow statKey="pen_" value={stats?.pen_ ?? 0} />
         <CharacterStatRow statKey="anomProf" value={stats?.anomProf ?? 0} />
         <CharacterStatRow statKey="anomMas" value={stats?.anomMas ?? 0} />
-        <CharacterStatRow statKey="enerRegen" value={stats?.enerRegen ?? 0} />
+        <CharacterStatRow
+          statKey="enerRegen"
+          value={stats?.enerRegen ?? 0}
+          specialty={specialty}
+        />
         {showDmgRow && (
           <CharacterStatRow statKey={dmgDisplayKey} value={stats?.dmg_ ?? 0} />
         )}
@@ -43,12 +49,16 @@ export function CharacterStatSummary({
 export function CharacterStatRow({
   statKey,
   value,
+  specialty,
 }: {
   statKey: string
   value: number
+  specialty?: string | null
 }) {
   const displayName =
-    statKeyTextMap[statKey as keyof typeof statKeyTextMap] ?? statKey
+    statKey === 'enerRegen' && specialty
+      ? getEnerRegenLabel(specialty)
+      : (statKeyTextMap[statKey as keyof typeof statKeyTextMap] ?? statKey)
   const displayValue = formatStatValue(statKey, value)
 
   return (

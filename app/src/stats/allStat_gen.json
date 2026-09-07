@@ -29009,7 +29009,7 @@
         "anomMas": 80,
         "anomProf": 79,
         "impact": 93,
-        "enerRegen": 0
+        "enerRegen": 1.5
       },
       "promotionStats": [
         {

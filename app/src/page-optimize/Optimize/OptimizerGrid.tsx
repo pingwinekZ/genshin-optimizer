@@ -10,6 +10,7 @@ import { AgGridReact } from 'ag-grid-react'
 import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { SpecialityKey } from '../../consts'
+import { getEnerRegenShortLabel } from '../../consts'
 import type { GeneratedBuild } from '../../db'
 import type { StatDisplay } from '../Sidebar/StatsViewSelect'
 import { useOptimizerDisplayStore } from '../stores/useOptimizerDisplayStore'
@@ -239,8 +240,8 @@ function buildStatColumnDefs(
     .map(({ field, formatter, width }) => ({
       colId: field,
       headerName:
-        field === 'enerRegen' && specialityKey === 'rupture'
-          ? 'AAA'
+        field === 'enerRegen'
+          ? getEnerRegenShortLabel(specialityKey)
           : (STAT_LABELS[field] ?? field),
       valueGetter: (params) => {
         const data = params.data

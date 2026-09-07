@@ -13,7 +13,7 @@ const key: WengineKey = 'WeepingCradle'
 const dm = mappedStats.wengine[key]
 const { phase } = own.wengine
 
-const { stacks } = allNumConditionals(key, true, 0, 8)
+const { stacks } = allNumConditionals(key, true, 0, 7)
 
 const sheet = registerWengine(
   key,

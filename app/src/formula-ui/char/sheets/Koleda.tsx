@@ -1,7 +1,15 @@
+import { ColorText } from '@zenless-optimizer/common/ui'
 import type { CharacterKey } from '../../../consts'
 import { Koleda } from '../../../formula'
-import { st, trans } from '../../util'
-import { createBaseSheet, fieldForBuff } from '../sheetUtil'
+import { GameDesc } from '../../../i18n'
+import { trans } from '../../util'
+import {
+  AbilityBodyText,
+  CoreGameDesc,
+  createBaseSheet,
+  fieldForBuff,
+} from '../sheetUtil'
+import { getVariant } from '../util'
 
 const key: CharacterKey = 'Koleda'
 const [, ch] = trans('char', key)
@@ -9,15 +17,39 @@ const cond = Koleda.conditionals
 const buff = Koleda.buffs
 const formula = Koleda.formulas
 
+function AbilityDescription() {
+  return (
+    <>
+      <GameDesc ns="char_Koleda_gen" key18="ability.desc.0" />
+      <AbilityBodyText characterKey={key}>
+        <GameDesc ns="char_Koleda_gen" key18="ability.desc.1" />
+      </AbilityBodyText>
+    </>
+  )
+}
+
 const sheet = createBaseSheet(key, {
   core: [
     {
       type: 'fields',
+      header: { icon: null, text: ch('core_header') },
+      description: <CoreGameDesc characterKey={key} />,
       fields: [
-        fieldForBuff(buff.core_exSpecial_dazeInc_),
         {
-          title: ch('core_dazeInc_'),
-          fieldRef: buff.core_dazeInc_.tag,
+          title: (
+            <ColorText color={getVariant(buff.core_exSpecial_dazeInc_.tag)}>
+              {ch('core_exSpecial_dazeInc_')}
+            </ColorText>
+          ),
+          fieldRef: buff.core_exSpecial_dazeInc_.tag,
+        },
+        {
+          title: (
+            <ColorText color={getVariant(buff.core_basic_dazeInc_.tag)}>
+              {ch('core_basic_dazeInc_')}
+            </ColorText>
+          ),
+          fieldRef: buff.core_basic_dazeInc_.tag,
         },
       ],
     },
@@ -26,25 +58,50 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: st('uponLaunch.1', { val1: '$t(skills.exSpecial)' }),
-        description:
-          'Increases Chain Attack DMG against enemies hit by EX Special Attack.',
+        label: ch('exSpecialDebuffCond'),
+        description: <AbilityDescription />,
         metadata: cond.exSpecial_debuff,
         fields: [fieldForBuff(buff.ability_chain_dmg_)],
       },
+    },
+  ],
+  potential: [
+    {
+      type: 'fields',
+      header: { icon: null, text: ch('potential_header') },
+      description: <GameDesc ns="char_Koleda_gen" key18="potential.desc.6" />,
+      fields: [
+        fieldForBuff(buff.potential_laceration_dmg_),
+        fieldForBuff(buff.potential_crit_dmg_),
+      ],
     },
   ],
   m1: [
     {
       type: 'conditional',
       conditional: {
-        label: ch('m1Cond'),
-        description:
-          'Increases Daze from Special and EX Special Attacks when used quickly in succession.',
+        label: ch('quickUseCond'),
+        description: (
+          <GameDesc ns="char_Koleda_gen" key18="mindscapes.1.desc" />
+        ),
         metadata: cond.quick_use,
         fields: [
-          fieldForBuff(buff.m1_special_dazeInc_),
-          fieldForBuff(buff.m1_exSpecial_dazeInc_),
+          {
+            title: (
+              <ColorText color={getVariant(buff.m1_special_dazeInc_.tag)}>
+                {ch('m1_special_dazeInc_')}
+              </ColorText>
+            ),
+            fieldRef: buff.m1_special_dazeInc_.tag,
+          },
+          {
+            title: (
+              <ColorText color={getVariant(buff.m1_exSpecial_dazeInc_.tag)}>
+                {ch('m1_exSpecial_dazeInc_')}
+              </ColorText>
+            ),
+            fieldRef: buff.m1_exSpecial_dazeInc_.tag,
+          },
         ],
       },
     },
@@ -53,13 +110,28 @@ const sheet = createBaseSheet(key, {
     {
       type: 'conditional',
       conditional: {
-        label: ch('m4Cond'),
-        description:
-          'Increases Chain Attack and Ultimate DMG after consuming Furnace Fire.',
+        label: ch('chargeCond'),
+        description: (
+          <GameDesc ns="char_Koleda_gen" key18="mindscapes.4.desc" />
+        ),
         metadata: cond.charge,
         fields: [
-          fieldForBuff(buff.m4_chain_dmg_),
-          fieldForBuff(buff.m4_ult_dmg_),
+          {
+            title: (
+              <ColorText color={getVariant(buff.m4_chain_dmg_.tag)}>
+                {ch('m4_chain_dmg_')}
+              </ColorText>
+            ),
+            fieldRef: buff.m4_chain_dmg_.tag,
+          },
+          {
+            title: (
+              <ColorText color={getVariant(buff.m4_ult_dmg_.tag)}>
+                {ch('m4_ult_dmg_')}
+              </ColorText>
+            ),
+            fieldRef: buff.m4_ult_dmg_.tag,
+          },
         ],
       },
     },
@@ -67,9 +139,15 @@ const sheet = createBaseSheet(key, {
   m6: [
     {
       type: 'fields',
+      header: { icon: null, text: ch('m6_additional_dmg') },
+      description: <GameDesc ns="char_Koleda_gen" key18="mindscapes.6.desc" />,
       fields: [
         {
-          title: st('dmg'),
+          title: (
+            <ColorText color={getVariant(formula.m6_dmg.tag)}>
+              {ch('m6_dmg')}
+            </ColorText>
+          ),
           fieldRef: formula.m6_dmg.tag,
         },
       ],

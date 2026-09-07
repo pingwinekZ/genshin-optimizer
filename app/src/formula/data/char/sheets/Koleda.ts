@@ -1,4 +1,10 @@
-import { cmpGE, prod, subscript, sum } from '@zenless-optimizer/pando/engine'
+import {
+  cmpEq,
+  cmpGE,
+  prod,
+  subscript,
+  sum,
+} from '@zenless-optimizer/pando/engine'
 import { type CharacterKey } from '../../../../consts'
 import { allStats, mappedStats } from '../../../../stats'
 import { isStunned } from '../../common/enemy'
@@ -11,6 +17,7 @@ import {
   percent,
   register,
   registerBuff,
+  target,
   team,
   teamBuff,
 } from '../../util'
@@ -34,7 +41,12 @@ const { charge } = allNumConditionals(key, true, 0, dm.m4.stacks, undefined, {
   charge: 4,
 })
 
-const core_dazeInc_ = ownBuff.combat.dazeInc_.add(
+const core_exSpecial_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
+  'exSpecial',
+  percent(subscript(char.core, dm.core.dazeInc_))
+)
+const core_basic_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
+  'basic',
   percent(subscript(char.core, dm.core.dazeInc_))
 )
 
@@ -89,7 +101,7 @@ const sheet = register(
       { damageType1: 'dash' },
       'atk'
     ),
-    // Per-hit buffs
+    // Per-hit buffs — only Enhanced Basic (hits 4-6) get core basic daze
     dmgDazeAndAnomOverride(
       dm,
       'basic',
@@ -98,7 +110,7 @@ const sheet = register(
       { ...baseTag, damageType1: 'basic' },
       'atk',
       undefined,
-      core_dazeInc_
+      ...core_basic_dazeInc_
     ),
     dmgDazeAndAnomOverride(
       dm,
@@ -108,7 +120,7 @@ const sheet = register(
       { ...baseTag, damageType1: 'basic' },
       'atk',
       undefined,
-      core_dazeInc_
+      ...core_basic_dazeInc_
     ),
     dmgDazeAndAnomOverride(
       dm,
@@ -118,7 +130,7 @@ const sheet = register(
       { ...baseTag, damageType1: 'basic' },
       'atk',
       undefined,
-      core_dazeInc_
+      ...core_basic_dazeInc_
     )
   ),
 
@@ -127,16 +139,26 @@ const sheet = register(
     { damageType1: 'elemental' },
     prod(own.final.atk, percent(dm.m6.dmg))
   ),
+  registerBuff(
+    'm6_dmg',
+    ownBuff.combat.dmg_.addWithDmgType(
+      'elemental',
+      cmpGE(char.mindscape, 6, percent(dm.m6.dmg))
+    ),
+    undefined,
+    undefined,
+    false
+  ),
 
   // Buffs
+  registerBuff('core_exSpecial_dazeInc_', core_exSpecial_dazeInc_),
   registerBuff(
-    'core_exSpecial_dazeInc_',
-    ownBuff.combat.dazeInc_.addWithDmgType(
-      'exSpecial',
-      percent(subscript(char.core, dm.core.dazeInc_))
-    )
+    'core_basic_dazeInc_',
+    core_basic_dazeInc_,
+    undefined,
+    undefined,
+    false
   ),
-  registerBuff('core_dazeInc_', core_dazeInc_, undefined, undefined, false),
   registerBuff(
     'ability_chain_dmg_',
     teamBuff.combat.dmg_.addWithDmgType(
@@ -181,6 +203,31 @@ const sheet = register(
       'ult',
       cmpGE(char.mindscape, 4, prod(charge, percent(dm.m4.chain_ult_dmg_)))
     )
+  ),
+  registerBuff(
+    'potential_laceration_dmg_',
+    teamBuff.combat.laceration_dmg_.add(
+      cmpEq(
+        target.char.specialty,
+        'armorer',
+        percent(dm.potential.laceration_dmg_[6])
+      )
+    ),
+    undefined,
+    true
+  ),
+  registerBuff(
+    'potential_crit_dmg_',
+    teamBuff.combat.crit_dmg_.add(
+      cmpEq(
+        target.char.specialty,
+        'armorer',
+        percent(0),
+        percent(dm.potential.crit_dmg_[6])
+      )
+    ),
+    undefined,
+    true
   )
 )
 export default sheet
