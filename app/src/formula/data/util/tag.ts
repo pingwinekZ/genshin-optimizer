@@ -139,6 +139,7 @@ export const ownTag = {
     impact: agg,
     crit_: agg,
     crit_dmg_: agg,
+    laceration_dmg_: agg,
     pen_: agg,
     anomProf: agg,
     anomMas: agg,

@@ -13,6 +13,7 @@ import {
   nonFlatAndPercentStats,
   own,
   ownBuff,
+  ownTag,
   percent,
   reader,
 } from '../util'
@@ -79,10 +80,13 @@ const data: TagMapNodeEntries = [
   // For stats with only 1 variant
   // initial x += base X; assuming base exists for that stat
   // Except sheer force because we gotta calculate that all funky
+  // Use ownTag.base (plain object) for `in` check; `ownBuff.base` is a Proxy where
+  // `in` relies on the `has` trap which is empty until the property is first
+  // accessed via `get`, so `s in ownBuff.base` would be false for unaccessed stats.
   ...nonFlatAndPercentStats
     .filter(
       (s): s is keyof typeof ownBuff.base =>
-        s in ownBuff.base && s !== 'sheerForce'
+        s in ownTag.base && s !== 'sheerForce'
     )
     .map((s) => ownBuff.initial[s].add(ownBuff.base[s], true)),
   // final x += initial X + combat X
@@ -106,6 +110,11 @@ const data: TagMapNodeEntries = [
   // final sheerForce = initial + combat
   ownBuff.final.sheerForce.add(
     sum(own.initial.sheerForce, own.combat.sheerForce)
+  ),
+
+  // Universal Armorer base Laceration DMG 150% (SharpCriticalDamage)
+  ownBuff.base.laceration_dmg_.add(
+    cmpEq(own.char.specialty, 'armorer', percent(1.5))
   ),
 
   // Capped CR = Max(Min(Final CR, 1), 0)
