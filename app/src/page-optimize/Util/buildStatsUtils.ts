@@ -238,8 +238,12 @@ export async function batchComputeBuildStats(
       let baseStats: BuildBaseStats | null = null
       let value = build.value
       try {
+        const effectiveChar =
+          build.wengineKey !== undefined
+            ? ({ ...character, wengineKey: build.wengineKey } as ICachedCharacter)
+            : character
         const result = computeBuildStats(
-          character,
+          effectiveChar,
           discs,
           team,
           targetTag,
@@ -326,9 +330,16 @@ export async function filterBuildsByStatFilters<
 
       let passes = true
       try {
+        const effectiveChar =
+          (build as { wengineKey?: string }).wengineKey !== undefined
+            ? ({
+                ...character,
+                wengineKey: (build as { wengineKey?: string }).wengineKey,
+              } as ICachedCharacter)
+            : character
         const calc = zzzCalculatorWithEntries(
           buildCalculatorEntries(
-            character,
+            effectiveChar,
             discs,
             team,
             getTeammateChar,

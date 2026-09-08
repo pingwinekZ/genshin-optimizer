@@ -140,7 +140,13 @@ export function buildAnalysisData(params: {
       }
     })
 
-  const targetInfo = buildTargetInfo(selectedBuild, getDisc, character, team)
+  const targetInfo = buildTargetInfo(
+    selectedBuild,
+    getDisc,
+    character,
+    team,
+    getTeammateChar
+  )
 
   return {
     selectedStats:
@@ -160,7 +166,8 @@ function buildTargetInfo(
   selectedBuild: { wengineKey?: string; discIds: DiscIds },
   getDisc: (id: string) => ICachedDisc | undefined,
   character: ICachedCharacter,
-  team: Team
+  team: Team,
+  getTeammateChar?: (key: CharacterKey) => ICachedCharacter | undefined
 ): TargetFormulaInfo | null {
   const frame = getTeamFrame0(team)
   if (!frame.tag) return null
@@ -178,7 +185,17 @@ function buildTargetInfo(
     ICachedDisc | undefined
   >
 
-  const entries = buildCalculatorEntries(character, discs, team)
+  const effectiveCharacter =
+    selectedBuild.wengineKey !== undefined
+      ? ({ ...character, wengineKey: selectedBuild.wengineKey } as ICachedCharacter)
+      : character
+  const entries = buildCalculatorEntries(
+    effectiveCharacter,
+    discs,
+    team,
+    getTeammateChar,
+    getDisc
+  )
   const calc = zzzCalculatorWithEntries(entries)
 
   const combatReader = convert(ownTag, {
