@@ -616,11 +616,17 @@ function DeepSeaVisitorBasicCritDesc({ phase }: { phase: number }) {
   return <GameText text={fullDesc.slice(startIdx, endIdx + 1)} />
 }
 
-/** Ice Dash CRIT portion of DeepSeaVisitor's phase description (from "When dealing" to end). */
-const DeepSeaVisitorIceDashCritDesc = fromMarkerDesc(
-  'wengine_DeepSeaVisitor_gen',
-  'When dealing'
-)
+/** Ice Dash CRIT portion of DeepSeaVisitor's phase description (from "When dealing" to end of that sentence). */
+function DeepSeaVisitorIceDashCritDesc({ phase }: { phase: number }) {
+  const { t } = useTranslation('wengine_DeepSeaVisitor_gen')
+  const fullDesc = t(`wengine_DeepSeaVisitor_gen:phaseDescs.${phase - 1}`)
+  const marker = 'When dealing'
+  const startIdx = fullDesc.indexOf(marker)
+  if (startIdx === -1) return <GameText text={fullDesc} />
+  const endIdx = fullDesc.indexOf('. ', startIdx)
+  if (endIdx === -1) return <GameText text={fullDesc.slice(startIdx)} />
+  return <GameText text={fullDesc.slice(startIdx, endIdx + 1)} />
+}
 
 /** Off-field Energy Regen portion of Housekeeper's phase description (first sentence). */
 const HousekeeperOffFieldDesc = firstSentenceDesc('wengine_Housekeeper_gen')
