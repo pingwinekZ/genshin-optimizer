@@ -240,7 +240,10 @@ export async function batchComputeBuildStats(
       try {
         const effectiveChar =
           build.wengineKey !== undefined
-            ? ({ ...character, wengineKey: build.wengineKey } as ICachedCharacter)
+            ? ({
+                ...character,
+                wengineKey: build.wengineKey,
+              } as ICachedCharacter)
             : character
         const result = computeBuildStats(
           effectiveChar,

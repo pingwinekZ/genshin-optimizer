@@ -187,7 +187,10 @@ function buildTargetInfo(
 
   const effectiveCharacter =
     selectedBuild.wengineKey !== undefined
-      ? ({ ...character, wengineKey: selectedBuild.wengineKey } as ICachedCharacter)
+      ? ({
+          ...character,
+          wengineKey: selectedBuild.wengineKey,
+        } as ICachedCharacter)
       : character
   const entries = buildCalculatorEntries(
     effectiveCharacter,
