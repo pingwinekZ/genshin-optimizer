@@ -35,7 +35,9 @@ const baseTag = getBaseTag(data_gen)
 
 const { char } = own
 
-const { quick_use } = allBoolConditionals(key, undefined, { quick_use: 1 })
+const { quick_use, furnace_fire } = allBoolConditionals(key, undefined, {
+  quick_use: 1,
+})
 const { exSpecial_debuff } = allNumConditionals(key, true, 0, dm.ability.stacks)
 const { charge } = allNumConditionals(key, true, 0, dm.m4.stacks, undefined, {
   charge: 4,
@@ -158,6 +160,14 @@ const sheet = register(
     undefined,
     undefined,
     false
+  ),
+  // Basic Attack: consuming Furnace Fire grants all Agents 35% more damage
+  // for 40s. No data in dm (static text value).
+  registerBuff(
+    'basic_common_dmg_',
+    teamBuff.combat.common_dmg_.add(furnace_fire.ifOn(percent(0.35))),
+    undefined,
+    true
   ),
   registerBuff(
     'ability_chain_dmg_',

@@ -2,6 +2,7 @@
   "core_header": "Daze",
   "core_exSpecial_dazeInc_": "EX Special Attack Daze",
   "core_basic_dazeInc_": "Enhanced Basic Attack Daze",
+  "furnaceFireCond": "Furnace Fire Consumed · Team DMG",
   "exSpecialDebuffCond": "EX Special Hit (Stunned) · Chain DMG",
   "quickUseCond": "Quick Special/EX Special · Daze",
   "chargeCond": "Furnace Fire Consumed · Chain & Ult DMG",

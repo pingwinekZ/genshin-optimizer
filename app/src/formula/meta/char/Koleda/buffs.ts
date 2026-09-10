@@ -39,6 +39,18 @@ export const buffs = {
     },
     team: false,
   },
+  basic_common_dmg_: {
+    sheet: 'Koleda',
+    name: 'basic_common_dmg_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'common_dmg_',
+      sheet: 'Koleda',
+      name: 'basic_common_dmg_',
+    },
+    team: true,
+  },
   ability_chain_dmg_: {
     sheet: 'Koleda',
     name: 'ability_chain_dmg_',

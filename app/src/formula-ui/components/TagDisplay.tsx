@@ -115,8 +115,13 @@ function TagStrDisplay({
     )
   const specificDmgType1 = tag.damageType1 ?? undefined
   const specificDmgType2 = tag.damageType2 ?? undefined
+  // `sharpDmgInst` is already badged as Sharp by `FullTagDisplay`, so the
+  // qualifier is dropped here and the aggregate reads "Electric Damage".
+  const skipDmgTypeQualifier =
+    tag.qt === 'formula' && tag.name === 'sharpDmgInst'
   const hasDmgTypeQualifier =
-    specificDmgType1 || specificDmgType2 || tag.attribute
+    (!skipDmgTypeQualifier && (specificDmgType1 || specificDmgType2)) ||
+    tag.attribute
   if (labelMap[label as keyof typeof labelMap] || hasDmgTypeQualifier) {
     const name =
       labelMap[label as keyof typeof labelMap] ??
@@ -127,8 +132,12 @@ function TagStrDisplay({
       : elementalData[tag.attribute as keyof typeof elementalData]
     const strs = [
       ...(tag.attribute ? [attrName] : []),
-      ...(specificDmgType1 ? [damageTypeKeysMap[specificDmgType1]] : []),
-      ...(specificDmgType2 ? [damageTypeKeysMap[specificDmgType2]] : []),
+      ...(specificDmgType1 && !skipDmgTypeQualifier
+        ? [damageTypeKeysMap[specificDmgType1]]
+        : []),
+      ...(specificDmgType2 && !skipDmgTypeQualifier
+        ? [damageTypeKeysMap[specificDmgType2]]
+        : []),
       ...(name ? [name] : []),
     ]
     return <span>{strs.join(' ')}</span>

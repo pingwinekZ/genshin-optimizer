@@ -1,6 +1,7 @@
 {
   "dmg": "{{val}}DMG",
   "anomBuildup": "{{val}}Anomaly Buildup",
+  "gashBuildup": "{{val}}Gash Buildup",
   "daze": "{{val}}Daze",
   "targetHpLe": "Target HP less than {{val}}%",
   "stack_one": "{{count}} stack",
