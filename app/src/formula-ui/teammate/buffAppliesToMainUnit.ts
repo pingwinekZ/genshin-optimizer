@@ -77,6 +77,65 @@ export function buffAppliesToMainUnit(tag: Tag | undefined | null): boolean {
   return !!effect && MAIN_UNIT_EFFECT_TYPES.has(effect)
 }
 
+/**
+ * Effect type backing a display buff (`et: 'display'` tag), resolved by
+ * matching its stat parts against real stat entries. `undefined` when the
+ * buff has no name/sheet or no matching stat entry was found.
+ */
+export function displayBuffEffect(
+  tag: Tag | undefined | null
+): EffectType | undefined {
+  if (!tag?.sheet || !tag.name) return undefined
+  return displayBuffEffectMap.get(displayBuffKey(tag))
+}
+
+/**
+ * Whether a display buff applies to the owner viewing their own sheet.
+ * Only `notOwnBuff`-backed buffs are excluded — they are routed exclusively
+ * to other squad members (see `teamData`). Anything else (including
+ * unmapped buffs) is kept to avoid hiding content.
+ */
+export function buffAppliesToSelf(tag: Tag | undefined | null): boolean {
+  if (!tag) return false
+  return displayBuffEffect(tag) !== 'notOwnBuff'
+}
+
+/**
+ * Mirror of `filterDocumentsForMainUnit` for the owner's own sheet view:
+ * drops buffs that only apply to other squad members (`notOwnBuff`), keeps
+ * everything else — including `text` documents.
+ */
+export function filterDocumentsForSelf(documents: Document[]): Document[] {
+  const filtered: Document[] = []
+  for (const document of documents) {
+    switch (document.type) {
+      case 'fields': {
+        const fields = document.fields.filter(
+          (field) => !isTagField(field) || buffAppliesToSelf(field.fieldRef)
+        )
+        if (fields.length) filtered.push({ ...document, fields })
+        break
+      }
+      case 'conditional': {
+        const fields = (document.conditional.fields ?? []).filter(
+          (field) => !isTagField(field) || buffAppliesToSelf(field.fieldRef)
+        )
+        if (fields.length) {
+          filtered.push({
+            ...document,
+            conditional: { ...document.conditional, fields },
+          })
+        }
+        break
+      }
+      case 'text':
+        filtered.push(document)
+        break
+    }
+  }
+  return filtered
+}
+
 function isTagField(field: Field): field is TagField {
   return 'fieldRef' in field
 }

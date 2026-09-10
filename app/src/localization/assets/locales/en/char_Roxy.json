@@ -10,6 +10,10 @@
   "m2_exDaze_header": "M2 · EX Special Daze",
   "m2Cond": "M2 · Stun DMG Multiplier",
   "m4_ult_header": "M4 · Ultimate DMG & Daze",
+  "m4_ult_dmg_": "Requiem for the Night-Burial DMG",
+  "m4_ult_daze_": "Requiem for the Night-Burial Daze",
   "m6_res_header": "M6 · Wind RES Ignore",
-  "m6Cond": "M6 · Afterecho Giant Windstorm"
+  "m6Cond": "M6 · Afterecho Giant Windstorm",
+  "m6_afterecho_mult_display_": "Eye of the Storm #3 DMG Multiplier",
+  "m6_afterecho_daze_": "Eye of the Storm #3 Daze"
 }

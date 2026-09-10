@@ -146,11 +146,12 @@ const ability_ex_anomBuildup_ = ownBuff.combat.anomBuildup_.add(
 // mechanic, M4 Energy grants, and M2 Windflow sustain timing.
 
 // M1: EX Kindly Rest in Peace → enemy All-Attribute RES reduction (Yuzuha /
-// AstraYao resRed_ pattern) + team CRIT DMG (passive once M1).
+// AstraYao resRed_ pattern, teamwide) + Roxy's own CRIT DMG (passive once M1,
+// self-only).
 const m1_allResRed_ = enemyDebuff.common.resRed_.add(
   cmpGE(char.mindscape, 1, m1ResShred.ifOn(percent(dm.m1.allResRed_)))
 )
-const m1_crit_dmg_ = teamBuff.combat.crit_dmg_.add(
+const m1_crit_dmg_ = ownBuff.combat.crit_dmg_.add(
   cmpGE(char.mindscape, 1, percent(dm.m1.crit_dmg_))
 )
 
@@ -184,8 +185,14 @@ const m6_afterecho_dmg_ = ownBuff.combat.common_dmg_.add(
     m6Afterecho.ifOn(percent(dm.m6.giantWindstormMult_ - 1))
   )
 )
+// Display-only total multiplier (250%) for the UI row, following the Claret
+// m1_maim_mult_display_ pattern. The additive buff above is what the
+// override actually applies.
 const m6_afterecho_daze_ = ownBuff.combat.dazeInc_.add(
   cmpGE(char.mindscape, 6, m6Afterecho.ifOn(percent(dm.m6.giantWindstormDaze_)))
+)
+const m6_afterecho_mult_display_ = ownBuff.combat.common_dmg_.add(
+  cmpGE(char.mindscape, 6, m6Afterecho.ifOn(percent(dm.m6.giantWindstormMult_)))
 )
 
 const sheet = register(
@@ -261,7 +268,7 @@ const sheet = register(
   ),
   registerBuff('ability_ex_anomBuildup_', ability_ex_anomBuildup_),
   registerBuff('m1_allResRed_', m1_allResRed_, undefined, true),
-  registerBuff('m1_crit_dmg_', m1_crit_dmg_, undefined, true),
+  registerBuff('m1_crit_dmg_', m1_crit_dmg_),
   registerBuff('m2_ex_daze_', m2_ex_daze_, undefined, undefined, false),
   registerBuff(
     'm2_stun_',
@@ -276,15 +283,15 @@ const sheet = register(
   registerBuff('m4_ult_daze_', m4_ult_daze_, undefined, undefined, false),
   registerBuff('m6_wind_resIgn_', m6_wind_resIgn_),
   registerBuff(
-    'm6_afterecho_dmg_',
-    m6_afterecho_dmg_,
+    'm6_afterecho_daze_',
+    m6_afterecho_daze_,
     undefined,
     undefined,
     false
   ),
   registerBuff(
-    'm6_afterecho_daze_',
-    m6_afterecho_daze_,
+    'm6_afterecho_mult_display_',
+    m6_afterecho_mult_display_,
     undefined,
     undefined,
     false

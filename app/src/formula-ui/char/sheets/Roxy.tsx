@@ -19,6 +19,8 @@ function useCoreKey(paragraph: number) {
 
 // Core p1: Energy Regen → ATK / Impact (single sentence, so the slice covers
 // the whole paragraph regardless of per-level numbers).
+// Note: `to` must be "</ct>." — ending at "0.4" would stop at the decimal
+// point, since sliceBetween ends at the first "." after the marker.
 function CoreRegenDescription() {
   const key18 = useCoreKey(1)
   return (
@@ -26,29 +28,21 @@ function CoreRegenDescription() {
       ns={ns}
       key18={key18}
       from="When Roxy's initial"
-      to="Impact increases by 0.4"
+      to="</ct>."
     />
   )
 }
 
-// Core p3: Contamination / Cleanse team buff.
+// Core p3: Contamination / Cleanse team buff (paragraph only).
 function ContaminationSurgeDescription() {
   const key18 = useCoreKey(3)
-  const cleanseKey = useCoreKey(2)
-  const reapplyKey = useCoreKey(4)
   return (
-    <>
-      <GameDescSlice
-        ns={ns}
-        key18={key18}
-        from="When any squad member triggers"
-        to="repeated triggers reset the duration."
-      />
-      <div style={{ marginTop: 8 }} />
-      <GameDesc ns={ns} key18={cleanseKey} />
-      <div style={{ marginTop: 8 }} />
-      <GameDesc ns={ns} key18={reapplyKey} />
-    </>
+    <GameDescSlice
+      ns={ns}
+      key18={key18}
+      from="When any squad member triggers"
+      to="repeated triggers reset the duration."
+    />
   )
 }
 
@@ -91,10 +85,6 @@ const sheet = createBaseSheet(key, {
               to="up to 80%."
             />
           </AbilityBodyText>
-          <div style={{ marginTop: 8 }} />
-          <GameDesc ns={ns} key18="ability.desc.4" />
-          <div style={{ marginTop: 8 }} />
-          <GameDesc ns={ns} key18="ability.desc.5" />
         </>
       ),
       fields: [fieldForBuff(buff.ability_self_dmg_)],
@@ -122,12 +112,17 @@ const sheet = createBaseSheet(key, {
       conditional: {
         label: ch('windsweptCond'),
         description: (
-          <GameDescSlice
-            ns={ns}
-            key18="ability.desc.3"
-            from="While an enemy is in the"
-            to="are increased by 8%."
-          />
+          <>
+            <GameDesc ns={ns} key18="ability.desc.0" />
+            <AbilityBodyText characterKey={key}>
+              <GameDescSlice
+                ns={ns}
+                key18="ability.desc.3"
+                from="While an enemy is in the"
+                to="are increased by 8%."
+              />
+            </AbilityBodyText>
+          </>
         ),
         metadata: cond.windsweptVulnerability,
         fields: [fieldForBuff(buff.ability_windswept_dmgInc_)],
@@ -138,12 +133,17 @@ const sheet = createBaseSheet(key, {
       conditional: {
         label: ch('exAnomalyCond'),
         description: (
-          <GameDescSlice
-            ns={ns}
-            key18="ability.desc.6"
-            from="When using an"
-            to="Repeated triggers reset the duration."
-          />
+          <>
+            <GameDesc ns={ns} key18="ability.desc.0" />
+            <AbilityBodyText characterKey={key}>
+              <GameDescSlice
+                ns={ns}
+                key18="ability.desc.6"
+                from="When using an"
+                to="Repeated triggers reset the duration."
+              />
+            </AbilityBodyText>
+          </>
         ),
         metadata: cond.exAnomalySurge,
         fields: [fieldForBuff(buff.ability_ex_anomBuildup_)],
@@ -159,7 +159,7 @@ const sheet = createBaseSheet(key, {
           <GameDescSlice
             ns={ns}
             key18="mindscapes.1.desc"
-            from="it reduces the enemy's All-Attribute RES"
+            from="When"
             to="Repeated triggers reset the duration."
           />
         ),
@@ -186,18 +186,12 @@ const sheet = createBaseSheet(key, {
       type: 'fields',
       header: { icon: null, text: ch('m2_exDaze_header') },
       description: (
-        <>
-          <GameDescSlice
-            ns={ns}
-            key18="mindscapes.2.desc.0"
-            from="deals 5%"
-            to="more Daze."
-          />
-          <div style={{ marginTop: 8 }} />
-          <GameDesc ns={ns} key18="mindscapes.2.desc.1" />
-          <div style={{ marginTop: 8 }} />
-          <GameDesc ns={ns} key18="mindscapes.2.desc.2" />
-        </>
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.2.desc.0"
+          from="<ct color=#ffffff>EX Special Attack"
+          to="more Daze."
+        />
       ),
       fields: [fieldForBuff(buff.m2_ex_daze_)],
     },
@@ -223,23 +217,23 @@ const sheet = createBaseSheet(key, {
       type: 'fields',
       header: { icon: null, text: ch('m4_ult_header') },
       description: (
-        <>
-          <GameDescSlice
-            ns={ns}
-            key18="mindscapes.4.desc"
-            from="When a"
-            to="grants 2 Energy, up to once per skill."
-          />
-          <div style={{ marginTop: 8 }} />
-          <GameDescSlice
-            ns={ns}
-            key18="mindscapes.4.desc"
-            from="deals 20% more DMG"
-            to="10% more Daze."
-          />
-        </>
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.4.desc"
+          from="<ct color=#ffffff>Ultimate: Requiem"
+          to="10% more Daze."
+        />
       ),
-      fields: [fieldForBuff(buff.m4_ult_dmg_), fieldForBuff(buff.m4_ult_daze_)],
+      fields: [
+        {
+          title: ch('m4_ult_dmg_'),
+          fieldRef: buff.m4_ult_dmg_.tag,
+        },
+        {
+          title: ch('m4_ult_daze_'),
+          fieldRef: buff.m4_ult_daze_.tag,
+        },
+      ],
     },
   ],
   m6: [
@@ -264,14 +258,20 @@ const sheet = createBaseSheet(key, {
           <GameDescSlice
             ns={ns}
             key18="mindscapes.6.desc.1"
-            from="When"
+            from="The DMG dealt by the"
             to="the Daze it inflicts increases by 20%."
           />
         ),
         metadata: cond.m6Afterecho,
         fields: [
-          fieldForBuff(buff.m6_afterecho_dmg_),
-          fieldForBuff(buff.m6_afterecho_daze_),
+          {
+            title: ch('m6_afterecho_mult_display_'),
+            fieldRef: buff.m6_afterecho_mult_display_.tag,
+          },
+          {
+            title: ch('m6_afterecho_daze_'),
+            fieldRef: buff.m6_afterecho_daze_.tag,
+          },
         ],
       },
     },

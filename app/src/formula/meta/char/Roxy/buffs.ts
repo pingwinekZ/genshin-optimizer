@@ -118,7 +118,7 @@ export const buffs = {
       sheet: 'Roxy',
       name: 'm1_crit_dmg_',
     },
-    team: true,
+    team: false,
   },
   m2_ex_daze_: {
     sheet: 'Roxy',
@@ -181,18 +181,6 @@ export const buffs = {
     },
     team: false,
   },
-  m6_afterecho_dmg_: {
-    sheet: 'Roxy',
-    name: 'm6_afterecho_dmg_',
-    tag: {
-      et: 'display',
-      qt: 'combat',
-      q: 'common_dmg_',
-      sheet: 'Roxy',
-      name: 'm6_afterecho_dmg_',
-    },
-    team: false,
-  },
   m6_afterecho_daze_: {
     sheet: 'Roxy',
     name: 'm6_afterecho_daze_',
@@ -202,6 +190,18 @@ export const buffs = {
       q: 'dazeInc_',
       sheet: 'Roxy',
       name: 'm6_afterecho_daze_',
+    },
+    team: false,
+  },
+  m6_afterecho_mult_display_: {
+    sheet: 'Roxy',
+    name: 'm6_afterecho_mult_display_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'common_dmg_',
+      sheet: 'Roxy',
+      name: 'm6_afterecho_mult_display_',
     },
     team: false,
   },

@@ -6,11 +6,12 @@ const data_gen = getWengineParams(key)
 
 let o = 0
 
-// TODO: Load scalings
 const dm = {
-  cond_dmg_: data_gen[o++] ?? [-1, 1, 2, 3, 4, 5],
-  passive_atk: data_gen[o++] ?? [-1, 1, 2, 3, 4, 5],
-  duration: data_gen[o++]?.[1] ?? 0,
+  crit_: data_gen[o++], // 0.24 - 24% CRIT Rate
+  windResIgn_: data_gen[o++], // 0.15 - 15% Wind RES ignore
+  dazeInc_: data_gen[o++], // 0.16 - 16% Daze dealt
+  teamDmg_: data_gen[o++], // 0.20 - 20% other members' DMG
+  duration: data_gen[o++]?.[1] ?? 0, // 50 - buff duration (s)
 } as const
 
 export default dm
