@@ -40,13 +40,12 @@ const {
   contaminationSurge,
   windsweptVulnerability,
   exAnomalySurge,
+  stunSurge,
   m1ResShred,
   m2StunSurge,
-  m6Afterecho,
 } = allBoolConditionals(key, undefined, {
   m1ResShred: 1,
   m2StunSurge: 2,
-  m6Afterecho: 6,
 })
 
 // Additional Ability team check: another Attack, Rupture, or Armorer squad
@@ -128,7 +127,7 @@ const ability_self_dmg_ = ownBuff.combat.common_dmg_.add(
 // Ability p2: squad Stun DMG Multiplier while the target is stunned. The kit
 // only buffs the stunned multiplier, so only stun_ is registered (no
 // unstun_). The +2s Stun duration has no optimizer effect.
-const ability_stun = ability_check(percent(dm.ability.stun_))
+const ability_stun = ability_check(stunSurge.ifOn(percent(dm.ability.stun_)))
 
 // Ability p3: enemies in Windswept take more direct DMG. Enemy dmgInc_
 // follows the PanYinhu/Caesar pattern.
@@ -177,22 +176,19 @@ const m6_wind_resIgn_ = ownBuff.combat.resIgn_.wind.add(
 )
 // M6 Afterecho: Giant Windstorm DMG "increases to 250%" = +150% additive,
 // scoped to Eye of the Storm hit 2 via override; Daze +20% likewise. The 2
-// extra storm instances are trigger counts, description-only.
+// extra storm instances are trigger counts, description-only. Passive once
+// M6 (no toggle — the windstorm is always empowered).
 const m6_afterecho_dmg_ = ownBuff.combat.common_dmg_.add(
-  cmpGE(
-    char.mindscape,
-    6,
-    m6Afterecho.ifOn(percent(dm.m6.giantWindstormMult_ - 1))
-  )
+  cmpGE(char.mindscape, 6, percent(dm.m6.giantWindstormMult_ - 1))
 )
 // Display-only total multiplier (250%) for the UI row, following the Claret
 // m1_maim_mult_display_ pattern. The additive buff above is what the
 // override actually applies.
 const m6_afterecho_daze_ = ownBuff.combat.dazeInc_.add(
-  cmpGE(char.mindscape, 6, m6Afterecho.ifOn(percent(dm.m6.giantWindstormDaze_)))
+  cmpGE(char.mindscape, 6, percent(dm.m6.giantWindstormDaze_))
 )
 const m6_afterecho_mult_display_ = ownBuff.combat.common_dmg_.add(
-  cmpGE(char.mindscape, 6, m6Afterecho.ifOn(percent(dm.m6.giantWindstormMult_)))
+  cmpGE(char.mindscape, 6, percent(dm.m6.giantWindstormMult_))
 )
 
 const sheet = register(

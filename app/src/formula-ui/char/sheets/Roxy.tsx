@@ -90,22 +90,25 @@ const sheet = createBaseSheet(key, {
       fields: [fieldForBuff(buff.ability_self_dmg_)],
     },
     {
-      type: 'fields',
-      header: { icon: null, text: ch('ability_stun_header') },
-      description: (
-        <>
-          <GameDesc ns={ns} key18="ability.desc.0" />
-          <AbilityBodyText characterKey={key}>
-            <GameDescSlice
-              ns={ns}
-              key18="ability.desc.2"
-              from="When any squad member's attack hits an enemy"
-              to="once the Stun ends."
-            />
-          </AbilityBodyText>
-        </>
-      ),
-      fields: [fieldForBuff(buff.ability_stun_)],
+      type: 'conditional',
+      conditional: {
+        label: ch('ability_stun_header'),
+        description: (
+          <>
+            <GameDesc ns={ns} key18="ability.desc.0" />
+            <AbilityBodyText characterKey={key}>
+              <GameDescSlice
+                ns={ns}
+                key18="ability.desc.2"
+                from="When any squad member's attack hits an enemy"
+                to="once the Stun ends."
+              />
+            </AbilityBodyText>
+          </>
+        ),
+        metadata: cond.stunSurge,
+        fields: [fieldForBuff(buff.ability_stun_)],
+      },
     },
     {
       type: 'conditional',
@@ -251,29 +254,26 @@ const sheet = createBaseSheet(key, {
       fields: [fieldForBuff(buff.m6_wind_resIgn_)],
     },
     {
-      type: 'conditional',
-      conditional: {
-        label: ch('m6Cond'),
-        description: (
-          <GameDescSlice
-            ns={ns}
-            key18="mindscapes.6.desc.1"
-            from="The DMG dealt by the"
-            to="the Daze it inflicts increases by 20%."
-          />
-        ),
-        metadata: cond.m6Afterecho,
-        fields: [
-          {
-            title: ch('m6_afterecho_mult_display_'),
-            fieldRef: buff.m6_afterecho_mult_display_.tag,
-          },
-          {
-            title: ch('m6_afterecho_daze_'),
-            fieldRef: buff.m6_afterecho_daze_.tag,
-          },
-        ],
-      },
+      type: 'fields',
+      header: { icon: null, text: ch('m6Cond') },
+      description: (
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.6.desc.1"
+          from="The DMG dealt by the"
+          to="the Daze it inflicts increases by 20%."
+        />
+      ),
+      fields: [
+        {
+          title: ch('m6_afterecho_mult_display_'),
+          fieldRef: buff.m6_afterecho_mult_display_.tag,
+        },
+        {
+          title: ch('m6_afterecho_daze_'),
+          fieldRef: buff.m6_afterecho_daze_.tag,
+        },
+      ],
     },
   ],
 })

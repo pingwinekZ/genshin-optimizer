@@ -18,12 +18,7 @@ export const conditionals = {
     type: 'bool',
     mindscapeRequirement: 2,
   },
-  m6Afterecho: {
-    sheet: 'Roxy',
-    name: 'm6Afterecho',
-    type: 'bool',
-    mindscapeRequirement: 6,
-  },
+  stunSurge: { sheet: 'Roxy', name: 'stunSurge', type: 'bool' },
   windsweptVulnerability: {
     sheet: 'Roxy',
     name: 'windsweptVulnerability',

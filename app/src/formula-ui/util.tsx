@@ -64,8 +64,7 @@ export function getTagLabel(tag: Tag | undefined | null): string {
       // so only the suffix is returned here. Gash keeps its qualifier
       // ("Electric Gash Buildup") since it has no badge.
       if (name === 'sharpDmgInst' && damageType1 === 'sharp') return 'Damage'
-      if (name === 'gashBuildupInst' && damageType1 === 'gash')
-        return 'Buildup'
+      if (name === 'gashBuildupInst' && damageType1 === 'gash') return 'Buildup'
       // Match formula names like 'vortexDmgInst_fire' → 'Vortex DMG',
       // 'disorderDmgInst_fire' → 'Disorder DMG'
       for (const [prefix, label] of Object.entries(formulaLabelMap)) {
