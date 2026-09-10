@@ -7,7 +7,6 @@ import {
 } from '@zenless-optimizer/pando/engine'
 import { type CharacterKey } from '../../../../consts'
 import { allStats, mappedStats } from '../../../../stats'
-import { isStunned } from '../../common/enemy'
 import {
   allBoolConditionals,
   allNumConditionals,
@@ -50,6 +49,21 @@ const core_exSpecial_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
 const core_basic_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
   'basic',
   percent(subscript(char.core, dm.core.dazeInc_))
+)
+
+// Additional Ability trigger: another squad member is a Rupture or Armorer
+// character or shares the same Attribute or Faction. Display-only marker so
+// the sheet can dim the ability description on the trigger alone, independent
+// of the EX Special debuff stack count (mirrors Lighter's `ability_active`).
+const ability_trigger_met = cmpGE(
+  sum(
+    team.common.count.fire,
+    team.common.count.withFaction('BelebogHeavyIndustries'),
+    team.common.count.withSpecialty('rupture'),
+    team.common.count.withSpecialty('armorer')
+  ),
+  3,
+  1
 )
 
 const sheet = register(
@@ -177,14 +191,22 @@ const sheet = register(
         sum(
           team.common.count.fire,
           team.common.count.withFaction('BelebogHeavyIndustries'),
-          team.common.count.withSpecialty('rupture')
+          team.common.count.withSpecialty('rupture'),
+          team.common.count.withSpecialty('armorer')
         ),
         3,
-        isStunned.ifOn(prod(exSpecial_debuff, percent(dm.ability.chain_dmg_)))
+        prod(exSpecial_debuff, percent(dm.ability.chain_dmg_))
       )
     ),
     undefined,
     true
+  ),
+  registerBuff(
+    'ability_active',
+    teamBuff.combat.dmg_.fire.add(ability_trigger_met),
+    undefined,
+    undefined,
+    false
   ),
   registerBuff(
     'm1_special_dazeInc_',

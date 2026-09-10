@@ -64,6 +64,19 @@ export const buffs = {
     },
     team: true,
   },
+  ability_active: {
+    sheet: 'Koleda',
+    name: 'ability_active',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'dmg_',
+      sheet: 'Koleda',
+      attribute: 'fire',
+      name: 'ability_active',
+    },
+    team: false,
+  },
   m1_special_dazeInc_: {
     sheet: 'Koleda',
     name: 'm1_special_dazeInc_',

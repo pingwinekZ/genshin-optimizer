@@ -38,27 +38,11 @@ import { AttributeName, StatDisplay } from '../ui'
 import { AfterShockToggleButton } from './AfterShockToggleButton'
 import { DmgTypeDropdown } from './DmgTypeDropdown'
 
-const percentageStats = new Set([
-  'atk_',
-  'crit_',
-  'crit_dmg_',
-  'hp_',
-  'dmg_',
-  'sheer_dmg_',
-  'impact_',
-  'dazeInc_',
-  'anomMas_',
-  'stun_',
-  'defIgn_',
-  'resIgn_',
-  'res_',
-  'resRed_',
-  'unstun_',
-  'anomBuildupRes_',
-  'dazeRes_',
-  'dazeRed_',
-  'defRed_',
-])
+// Percent stats are identified by a trailing underscore (e.g. `def_`, `atk_`),
+// matching `isPercentStat` in `@zenless-optimizer/common/util`.
+function isPercentStat(key: string): boolean {
+  return key.endsWith('_')
+}
 
 export function AppliedBuffStats() {
   const { database } = useDatabaseContext()
@@ -292,7 +276,7 @@ function BonusStatRow({
               placeholder="Val"
               size="sm"
               style={{ flex: 'none' }}
-              suffix={percentageStats.has(tag.q) ? '%' : undefined}
+              suffix={isPercentStat(tag.q) ? '%' : undefined}
             />
           </Flex>
         </Stack>
@@ -438,7 +422,7 @@ function EnemyStatRow({
               placeholder="Val"
               size="sm"
               style={{ flex: 'none' }}
-              suffix={percentageStats.has(tag.q) ? '%' : undefined}
+              suffix={isPercentStat(tag.q) ? '%' : undefined}
             />
           </Flex>
         </Stack>
