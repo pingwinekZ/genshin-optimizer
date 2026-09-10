@@ -3,7 +3,7 @@ import { useCharacter } from '../../../db-ui'
 import { Claret } from '../../../formula'
 import { GameDesc, GameDescSlice } from '../../../i18n'
 import { trans } from '../../util'
-import { createBaseSheet, fieldForBuff } from '../sheetUtil'
+import { AbilityBodyText, createBaseSheet, fieldForBuff } from '../sheetUtil'
 
 const key: CharacterKey = 'Claret'
 const [, ch] = trans('char', key)
@@ -111,7 +111,16 @@ const sheet = createBaseSheet(key, {
         label: ch('perfectDodgeCond'),
         description: <PerfectDodgeDescription />,
         metadata: cond.perfectDodge,
-        fields: [fieldForBuff(buff.core_perfectDodge_dmg_)],
+        fields: [
+          {
+            title: ch('perfectDodge_starforging'),
+            fieldRef: buff.core_perfectDodge_starforging_dmg_.tag,
+          },
+          {
+            title: ch('perfectDodge_subduingAxe'),
+            fieldRef: buff.core_perfectDodge_subduingAxe_dmg_.tag,
+          },
+        ],
       },
     },
   ],
@@ -120,7 +129,14 @@ const sheet = createBaseSheet(key, {
       type: 'conditional',
       conditional: {
         label: ch('remnantEdgeCond'),
-        description: <GameDesc ns="char_Claret_gen" key18="ability.desc.2" />,
+        description: (
+          <>
+            <GameDesc ns={ns} key18="ability.desc.0" />
+            <AbilityBodyText characterKey={key}>
+              <GameDesc ns={ns} key18="ability.desc.2" />
+            </AbilityBodyText>
+          </>
+        ),
         metadata: cond.remnantEdge,
         fields: [fieldForBuff(buff.ability_remnant_laceration_)],
       },
@@ -216,18 +232,6 @@ const sheet = createBaseSheet(key, {
         {
           title: ch('m4_trial'),
           fieldRef: buff.m4_trial_dmg_.tag,
-        },
-      ],
-    },
-  ],
-  m6: [
-    {
-      type: 'fields',
-      header: { icon: null, text: ch('m6_header') },
-      fields: [
-        {
-          title: ch('m6_maim'),
-          fieldRef: formula.m6_maim.tag,
         },
       ],
     },

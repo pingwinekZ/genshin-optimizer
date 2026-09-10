@@ -140,15 +140,27 @@ export const buffs = {
     },
     team: false,
   },
-  core_perfectDodge_dmg_: {
+  core_perfectDodge_starforging_dmg_: {
     sheet: 'Claret',
-    name: 'core_perfectDodge_dmg_',
+    name: 'core_perfectDodge_starforging_dmg_',
     tag: {
       et: 'display',
       qt: 'combat',
       q: 'common_dmg_',
       sheet: 'Claret',
-      name: 'core_perfectDodge_dmg_',
+      name: 'core_perfectDodge_starforging_dmg_',
+    },
+    team: false,
+  },
+  core_perfectDodge_subduingAxe_dmg_: {
+    sheet: 'Claret',
+    name: 'core_perfectDodge_subduingAxe_dmg_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'common_dmg_',
+      sheet: 'Claret',
+      name: 'core_perfectDodge_subduingAxe_dmg_',
     },
     team: false,
   },

@@ -11,7 +11,6 @@ import { type CharacterKey } from '../../../../consts'
 import { allStats, mappedStats } from '../../../../stats'
 import {
   allBoolConditionals,
-  customMaimDmg,
   own,
   ownBuff,
   percent,
@@ -103,7 +102,12 @@ const core_crimson_skill_gashBuildup = Object.fromEntries(
 ) as Record<(typeof crimsonSkillDmgTypes)[number], TagMapNodeEntries>
 
 // Perfect Dodge during Starforging / SubduingAxe: DMG +15% for remainder
-const core_perfectDodge_dmg_ = ownBuff.combat.common_dmg_.add(
+// Separate buffs per skill so the UI can display one row per skill instead
+// of a generic "DMG" (same pattern as M4 hits).
+const core_perfectDodge_starforging_dmg_ = ownBuff.combat.common_dmg_.add(
+  perfectDodge.ifOn(percent(dm.core.perfectDodgeDmg_))
+)
+const core_perfectDodge_subduingAxe_dmg_ = ownBuff.combat.common_dmg_.add(
   perfectDodge.ifOn(percent(dm.core.perfectDodgeDmg_))
 )
 
@@ -170,6 +174,50 @@ const m4_resonant_dmg_ = ownBuff.combat.common_dmg_.add(
 const m4_trial_dmg_ = ownBuff.combat.common_dmg_.add(
   cmpGE(char.mindscape, 4, percent(dm.m4.dmg_))
 )
+// Perfect Dodge DMG only affects Starforging (all 4 hits) and Subduing Axe.
+// Passed as instance-scoped extras so the buff never leaks globally (same
+// pattern as M1 Maim / M4 hits). Hit 2 of Starforging also carries the M4
+// buff, so they share a single override to avoid layeredAssignment overwrite.
+const perfectDodgeStarforgingOverride0 = dmgDazeAndAnomOverride(
+  dm,
+  'basic',
+  'BasicAttackBloodbloomOathStarforging',
+  0,
+  { ...baseTag, damageType1: 'basic' },
+  'def',
+  undefined,
+  core_perfectDodge_starforging_dmg_
+)
+const perfectDodgeStarforgingOverride1 = dmgDazeAndAnomOverride(
+  dm,
+  'basic',
+  'BasicAttackBloodbloomOathStarforging',
+  1,
+  { ...baseTag, damageType1: 'basic' },
+  'def',
+  undefined,
+  core_perfectDodge_starforging_dmg_
+)
+const perfectDodgeSubduingAxeOverride = dmgDazeAndAnomOverride(
+  dm,
+  'basic',
+  'BasicAttackBloodbloomOathSubduingAxe',
+  0,
+  { ...baseTag, damageType1: 'basic' },
+  'def',
+  undefined,
+  core_perfectDodge_subduingAxe_dmg_
+)
+const perfectDodgeStarforgingOverride3 = dmgDazeAndAnomOverride(
+  dm,
+  'basic',
+  'BasicAttackBloodbloomOathStarforging',
+  3,
+  { ...baseTag, damageType1: 'basic' },
+  'def',
+  undefined,
+  core_perfectDodge_starforging_dmg_
+)
 const m4StarforgingOverride = dmgDazeAndAnomOverride(
   dm,
   'basic',
@@ -178,7 +226,8 @@ const m4StarforgingOverride = dmgDazeAndAnomOverride(
   { ...baseTag, damageType1: 'basic' },
   'def',
   undefined,
-  m4_starforging_dmg_
+  m4_starforging_dmg_,
+  core_perfectDodge_starforging_dmg_
 )
 const m4ResonantOverride = dmgDazeAndAnomOverride(
   dm,
@@ -228,14 +277,11 @@ const sheet = register(
     m1MaimOverride,
     m4StarforgingOverride,
     m4ResonantOverride,
-    m4TrialOverride
-  ),
-
-  // M6: Chain and Ult heavy hits directly trigger Maim without consuming Gash
-  ...customMaimDmg(
-    'm6_maim',
-    { attribute: data_gen.attribute, damageType1: 'chain' },
-    cmpGE(char.mindscape, 6, prod(own.final.def, percent(1.5)))
+    m4TrialOverride,
+    perfectDodgeStarforgingOverride0,
+    perfectDodgeStarforgingOverride1,
+    perfectDodgeStarforgingOverride3,
+    perfectDodgeSubduingAxeOverride
   ),
 
   // Buffs
@@ -271,7 +317,22 @@ const sheet = register(
     'core_crimson_skill_gashBuildup_assistFollowUp_',
     core_crimson_skill_gashBuildup['assistFollowUp']
   ),
-  registerBuff('core_perfectDodge_dmg_', core_perfectDodge_dmg_),
+  // Listing-only: actual effect is via instance-scoped extras above so it
+  // only affects Starforging / Subduing Axe and never leaks globally.
+  registerBuff(
+    'core_perfectDodge_starforging_dmg_',
+    core_perfectDodge_starforging_dmg_,
+    undefined,
+    false,
+    false
+  ),
+  registerBuff(
+    'core_perfectDodge_subduingAxe_dmg_',
+    core_perfectDodge_subduingAxe_dmg_,
+    undefined,
+    false,
+    false
+  ),
   registerBuff(
     'ability_remnant_laceration_',
     ability_remnant_laceration_,
