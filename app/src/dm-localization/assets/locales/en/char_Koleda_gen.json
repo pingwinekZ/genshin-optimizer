@@ -8,13 +8,13 @@
         "0": "Press <IconNormal /> to activate:",
         "1": "Unleashes up to 4 strikes, dealing <ct color=#F0D12B>Physical DMG</ct>.",
         "2": "When Koleda has the <ct color=#FFFFFF>Furnace Fire</ct> effect, she can launch an enhanced <ct color=#FFFFFF>Basic Attack</ct> after the 2nd hit, consuming the <ct color=#FFFFFF>Furnace Fire</ct> effect and dealing massive <ct color=#FF5521>Fire DMG</ct>.",
-        "3": "Enhanced <ct color=#FFFFFF>Basic Attack</ct> consists of two stages. After performing the first stage, press or hold <IconNormal /> to follow up with the second stage. The pursuit effect of the first-stage enhanced <ct color=#FFFFFF>Basic Attack</ct> is also strengthened.",
+        "3": "Enhanced <ct color=#FFFFFF>Basic Attack</ct> consists of two hits. After performing the first hit, press or hold <IconNormal /> to follow up with the second hit. The pursuit effect of the enhanced <ct color=#FFFFFF>Basic Attack</ct>'s first hit is also strengthened.",
         "4": "<ct color=#FFFFFF>Furnace Fire</ct> can stack up to 2 times. Performing an enhanced <ct color=#FFFFFF>Basic Attack</ct> consumes all stacks of <ct color=#FFFFFF>Furnace Fire</ct>.",
-        "5": "When <ct color=#FFFFFF>Furnace Fire</ct> is consumed, all Agents deal 35% more damage for 40s. Repeated triggers refresh the duration. For each stack of <ct color=#FFFFFF>Furnace Fire</ct> consumed, the second stage of the enhanced <ct color=#FFFFFF>Basic Attack</ct> deals 10% more damage and inflicts 20% more Daze.",
-        "6": "When switching Agents during the first stage of the enhanced <ct color=#FFFFFF>Basic Attack</ct>, Koleda remains on-field and automatically launches the second stage of the enhanced <ct color=#FFFFFF>Basic Attack</ct>.",
-        "7": "When Koleda and Ben are both in the squad, using an enhanced <ct color=#FFFFFF>Basic Attack</ct> without switching Agents during the first stage of the enhanced <ct color=#FFFFFF>Basic Attack</ct> causes the two to perform a Coordinated Attack, further increasing the skill's power.",
-        "8": "Character is Invulnerable during the 4th hit of her <ct color=#FFFFFF>Basic Attack</ct> and her enhanced <ct color=#FFFFFF>Basic Attack</ct>.",
-        "9": "The invulnerability duration of the second-stage enhanced <ct color=#FFFFFF>Basic Attack</ct> is increased."
+        "5": "When <ct color=#FFFFFF>Furnace Fire</ct> is consumed, all Agents deal 35% more damage for 40s. Repeated triggers reset the duration. For each stack of <ct color=#FFFFFF>Furnace Fire</ct> consumed, the second hit of the enhanced <ct color=#FFFFFF>Basic Attack</ct> deals 10% more damage and inflicts 20% more Daze.",
+        "6": "When switching Agents during the first hit of the enhanced <ct color=#FFFFFF>Basic Attack</ct>, Koleda remains on-field and automatically launches the second hit of the enhanced <ct color=#FFFFFF>Basic Attack</ct>.",
+        "7": "When Koleda and Ben are both in the squad, using an enhanced <ct color=#FFFFFF>Basic Attack</ct> without switching Agents during the first hit of the enhanced <ct color=#FFFFFF>Basic Attack</ct> causes the two to perform a Coordinated Attack, further increasing the skill's power.",
+        "8": "Character is invulnerable during the 4th hit of her <ct color=#FFFFFF>Basic Attack</ct> and her enhanced <ct color=#FFFFFF>Basic Attack</ct>.",
+        "9": "The invulnerability duration of the second hit of her enhanced <ct color=#FFFFFF>Basic Attack</ct> is increased."
       },
       "params": [
         "1st-Hit ",
@@ -42,8 +42,8 @@
       "name": "Dash Attack: Tremble!",
       "desc": {
         "0": "Press <IconNormal /> during a dodge to activate:",
-        "1": "Perform a forward strike, dealing <ct color=#F0D12B>Physical DMG</ct>.",
-        "2": "During this skill, if she has <ct color=#FFFFFF>Furnace Fire</ct>, then Anti-Interrupt Level is increased. Hold <IconNormal /> to follow up with an enhanced <ct color=#FFFFFF>Basic Attack</ct>."
+        "1": "Performs a forward strike, dealing <ct color=#F0D12B>Physical DMG</ct>.",
+        "2": "During this skill, if Koleda has <ct color=#FFFFFF>Furnace Fire</ct>, its Anti-Interrupt Level is increased. Hold <IconNormal /> to follow up with an enhanced <ct color=#FFFFFF>Basic Attack</ct>."
       },
       "params": [
         " "
@@ -54,7 +54,7 @@
       "desc": {
         "0": "Press <IconNormal /> during a <ct color=#FFFFFF>Perfect Dodge</ct> to activate:",
         "1": "Strikes enemies in front and creates an explosion, dealing <ct color=#FF5521>Fire DMG</ct>.",
-        "2": "Character is invulnerable while using this skill. If <ct color=#FFFFFF>Furnace Fire</ct> is active, hold <IconNormal /> to follow up with an enhanced <ct color=#FFFFFF>Basic Attack</ct>."
+        "2": "Character is invulnerable while using this skill. If Koleda has <ct color=#FFFFFF>Furnace Fire</ct>, hold <IconNormal /> to follow up with an enhanced <ct color=#FFFFFF>Basic Attack</ct>."
       },
       "params": [
         " "

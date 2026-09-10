@@ -29737,19 +29737,6 @@
           ]
         },
         "special": {
-          "SpecialAttackForgiveMeForNotSeeingYouOff": [
-            {
-              "DamagePercentage": 2.5,
-              "DamagePercentageGrowth": 0.228,
-              "StunRatio": 0.706,
-              "StunRatioGrowth": 0.033,
-              "SpRecovery": 0,
-              "SpRecoveryGrowth": 0,
-              "FeverRecovery": 0,
-              "FeverRecoveryGrowth": 0,
-              "AttributeInfliction": 64.09
-            }
-          ],
           "SpecialAttackMuchObliged": [
             {
               "DamagePercentage": 0.509,
@@ -29761,6 +29748,19 @@
               "FeverRecovery": 1674.75,
               "FeverRecoveryGrowth": 0,
               "AttributeInfliction": 28.24
+            }
+          ],
+          "SpecialAttackForgiveMeForNotSeeingYouOff": [
+            {
+              "DamagePercentage": 2.5,
+              "DamagePercentageGrowth": 0.228,
+              "StunRatio": 0.706,
+              "StunRatioGrowth": 0.033,
+              "SpRecovery": 0,
+              "SpRecoveryGrowth": 0,
+              "FeverRecovery": 0,
+              "FeverRecoveryGrowth": 0,
+              "AttributeInfliction": 64.09
             }
           ],
           "EXSpecialAttackDontCatchAChill": [
@@ -29811,7 +29811,7 @@
               "AttributeInfliction": 0
             }
           ],
-          "StormsEye": [
+          "EyeOfTheStorm": [
             {
               "DamagePercentage": 0.521,
               "DamagePercentageGrowth": 0.048,
@@ -29887,6 +29887,17 @@
               "FeverRecovery": 1650,
               "FeverRecoveryGrowth": 0,
               "AttributeInfliction": 60
+            },
+            {
+              "DamagePercentage": 6.116,
+              "DamagePercentageGrowth": 0.556,
+              "StunRatio": 4.587,
+              "StunRatioGrowth": 0.209,
+              "SpRecovery": 0,
+              "SpRecoveryGrowth": 0,
+              "FeverRecovery": 14407.25,
+              "FeverRecoveryGrowth": 0,
+              "AttributeInfliction": 443.67
             }
           ],
           "QuickAssistAtYourService": [
@@ -29962,11 +29973,11 @@
           "DodgeCounterReturnedCourtesy": []
         },
         "special": {
-          "SpecialAttackForgiveMeForNotSeeingYouOff": [],
           "SpecialAttackMuchObliged": [],
+          "SpecialAttackForgiveMeForNotSeeingYouOff": [],
           "EXSpecialAttackDontCatchAChill": [],
           "EXSpecialAttackKindlyRestInPeace": [],
-          "StormsEye": []
+          "EyeOfTheStorm": []
         },
         "chain": {
           "ChainAttackGaleBurialGreatHammer": [],

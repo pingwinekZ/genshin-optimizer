@@ -1,6 +1,8 @@
 [
   {
     "id": 69001,
+    "beginTime": "2024-12-20 04:00:00",
+    "endTime": "2025-01-10 03:59:59",
     "zones": [
       {
         "name": "Sacrifice - Bringer",
@@ -97,6 +99,8 @@
   },
   {
     "id": 69002,
+    "beginTime": "2025-01-10 04:00:00",
+    "endTime": "2025-01-24 03:59:59",
     "zones": [
       {
         "name": "Sacrifice - Bringer",
@@ -194,6 +198,8 @@
   },
   {
     "id": 69003,
+    "beginTime": "2025-01-24 04:00:00",
+    "endTime": "2025-02-07 03:59:59",
     "zones": [
       {
         "name": "Notorious - Dead End Butcher",
@@ -379,6 +385,8 @@
   },
   {
     "id": 69004,
+    "beginTime": "2025-02-07 04:00:00",
+    "endTime": "2025-02-21 03:59:59",
     "zones": [
       {
         "name": "Notorious - Dead End Butcher",
@@ -566,6 +574,8 @@
   },
   {
     "id": 69005,
+    "beginTime": "2025-02-21 04:00:00",
+    "endTime": "2025-03-07 03:59:59",
     "zones": [
       {
         "name": "Notorious - Pompey",
@@ -755,6 +765,8 @@
   },
   {
     "id": 69006,
+    "beginTime": "2025-03-07 04:00:00",
+    "endTime": "2025-03-21 03:59:59",
     "zones": [
       {
         "name": "Unknown Corruption Complex",
@@ -944,6 +956,8 @@
   },
   {
     "id": 69007,
+    "beginTime": "2025-03-21 04:00:00",
+    "endTime": "2025-04-04 03:59:59",
     "zones": [
       {
         "name": "Unknown Corruption Complex",
@@ -1041,6 +1055,8 @@
   },
   {
     "id": 69008,
+    "beginTime": "2025-04-04 04:00:00",
+    "endTime": "2025-04-18 03:59:59",
     "zones": [
       {
         "name": "Notorious - Marionette",
@@ -1138,6 +1154,8 @@
   },
   {
     "id": 69009,
+    "beginTime": "2025-04-18 04:00:00",
+    "endTime": "2025-05-02 03:59:59",
     "zones": [
       {
         "name": "Dead End Butcher",
@@ -1232,6 +1250,8 @@
   },
   {
     "id": 69010,
+    "beginTime": "2025-05-02 04:00:00",
+    "endTime": "2025-05-16 03:59:59",
     "zones": [
       {
         "name": "Sacrifice - Bringer",
@@ -1328,6 +1348,8 @@
   },
   {
     "id": 69011,
+    "beginTime": "2025-05-16 04:00:00",
+    "endTime": "2025-05-30 03:59:59",
     "zones": [
       {
         "name": "Notorious - Marionette",
@@ -1423,6 +1445,8 @@
   },
   {
     "id": 69012,
+    "beginTime": "2025-05-30 04:00:00",
+    "endTime": "2025-06-13 03:59:59",
     "zones": [
       {
         "name": "Notorious - Marionette",
@@ -1519,6 +1543,8 @@
   },
   {
     "id": 69013,
+    "beginTime": "2025-06-13 04:00:00",
+    "endTime": "2025-06-27 03:59:59",
     "zones": [
       {
         "name": "Miasma Priest",
@@ -1615,6 +1641,8 @@
   },
   {
     "id": 69014,
+    "beginTime": "2025-06-27 04:00:00",
+    "endTime": "2025-07-11 03:59:59",
     "zones": [
       {
         "name": "Notorious - Pompey",
@@ -1711,6 +1739,8 @@
   },
   {
     "id": 69015,
+    "beginTime": "2025-07-11 04:00:00",
+    "endTime": "2025-07-25 03:59:59",
     "zones": [
       {
         "name": "Miasma Priest",
@@ -1807,6 +1837,8 @@
   },
   {
     "id": 69016,
+    "beginTime": "2025-07-25 04:00:00",
+    "endTime": "2025-08-08 03:59:59",
     "zones": [
       {
         "name": "Miasma Priest",
@@ -1906,6 +1938,8 @@
   },
   {
     "id": 69017,
+    "beginTime": "2025-08-08 04:00:00",
+    "endTime": "2025-08-22 03:59:59",
     "zones": [
       {
         "name": "Miasmic Fiend - Unfathomable",
@@ -2001,6 +2035,8 @@
   },
   {
     "id": 69018,
+    "beginTime": "2025-08-22 04:00:00",
+    "endTime": "2025-09-05 03:59:59",
     "zones": [
       {
         "name": "Notorious - Dead End Butcher",
@@ -2098,6 +2134,8 @@
   },
   {
     "id": 69019,
+    "beginTime": "2025-09-05 04:00:00",
+    "endTime": "2025-09-19 03:59:59",
     "zones": [
       {
         "name": "The Defiler",
@@ -2198,6 +2236,8 @@
   },
   {
     "id": 69020,
+    "beginTime": "2025-09-19 04:00:00",
+    "endTime": "2025-10-03 03:59:59",
     "zones": [
       {
         "name": "The Defiler",
@@ -2295,6 +2335,8 @@
   },
   {
     "id": 69021,
+    "beginTime": "2025-10-03 04:00:00",
+    "endTime": "2025-10-17 03:59:59",
     "zones": [
       {
         "name": "Miasmic Fiend - Unfathomable",
@@ -2392,6 +2434,8 @@
   },
   {
     "id": 69022,
+    "beginTime": "2025-10-17 04:00:00",
+    "endTime": "2025-10-31 03:59:59",
     "zones": [
       {
         "name": "Miasma Priest",
@@ -2489,6 +2533,8 @@
   },
   {
     "id": 69023,
+    "beginTime": "2025-10-31 04:00:00",
+    "endTime": "2025-11-14 03:59:59",
     "zones": [
       {
         "name": "Wandering Hunter",
@@ -2590,6 +2636,8 @@
   },
   {
     "id": 69024,
+    "beginTime": "2025-11-14 04:00:00",
+    "endTime": "2025-11-28 03:59:59",
     "zones": [
       {
         "name": "Wandering Hunter",
@@ -2690,6 +2738,8 @@
   },
   {
     "id": 69025,
+    "beginTime": "2025-11-28 04:00:00",
+    "endTime": "2025-12-12 03:59:59",
     "zones": [
       {
         "name": "Notorious - Marionette",
@@ -2789,6 +2839,8 @@
   },
   {
     "id": 69026,
+    "beginTime": "2025-12-12 04:00:00",
+    "endTime": "2026-01-02 03:59:59",
     "zones": [
       {
         "name": "Wandering Hunter",
@@ -2890,8 +2942,8 @@
   },
   {
     "id": 69027,
-    "beginTime": "2025-11-05 04:00:00",
-    "endTime": "2025-11-06 03:59:59",
+    "beginTime": "2026-01-02 04:00:00",
+    "endTime": "2026-01-16 03:59:59",
     "zones": [
       {
         "name": "Primordial Nightmare - \"The Creator\"",
@@ -3093,6 +3145,8 @@
   },
   {
     "id": 69028,
+    "beginTime": "2026-01-16 04:00:00",
+    "endTime": "2026-01-30 03:59:59",
     "zones": [
       {
         "name": "The Defiler",
@@ -3190,6 +3244,8 @@
   },
   {
     "id": 69029,
+    "beginTime": "2026-01-30 04:00:00",
+    "endTime": "2026-02-13 03:59:59",
     "zones": [
       {
         "name": "Primordial Nightmare - \"The Creator\"",
@@ -3288,6 +3344,8 @@
   },
   {
     "id": 69030,
+    "beginTime": "2026-02-13 04:00:00",
+    "endTime": "2026-02-27 03:59:59",
     "zones": [
       {
         "name": "Primordial Nightmare - \"The Creator\"",
@@ -3385,6 +3443,8 @@
   },
   {
     "id": 69031,
+    "beginTime": "2026-02-27 04:00:00",
+    "endTime": "2026-03-13 03:59:59",
     "zones": [
       {
         "name": "Discordant Solo - Vesper",
@@ -3487,6 +3547,8 @@
   },
   {
     "id": 69032,
+    "beginTime": "2026-03-13 04:00:00",
+    "endTime": "2026-03-27 03:59:59",
     "zones": [
       {
         "name": "Miasmic Fiend - Unfathomable",
@@ -3588,6 +3650,8 @@
   },
   {
     "id": 69033,
+    "beginTime": "2026-03-27 04:00:00",
+    "endTime": "2026-04-10 03:59:59",
     "zones": [
       {
         "name": "Sanguine Sweeper",
@@ -3686,6 +3750,8 @@
   },
   {
     "id": 69034,
+    "beginTime": "2026-04-10 04:00:00",
+    "endTime": "2026-04-24 03:59:59",
     "zones": [
       {
         "name": "Discordant Solo - Vesper",
@@ -3786,6 +3852,8 @@
   },
   {
     "id": 69035,
+    "beginTime": "2026-04-24 04:00:00",
+    "endTime": "2026-05-08 03:59:59",
     "zones": [
       {
         "name": "Sanguine Sweeper",
@@ -3888,6 +3956,8 @@
   },
   {
     "id": 69036,
+    "beginTime": "2026-05-08 04:00:00",
+    "endTime": "2026-05-22 03:59:59",
     "zones": [
       {
         "name": "Phaethon of the Scorched Horizon",
@@ -3989,6 +4059,8 @@
   },
   {
     "id": 69037,
+    "beginTime": "2026-05-22 04:00:00",
+    "endTime": "2026-06-05 03:59:59",
     "zones": [
       {
         "name": "Notorious - Dead End Butcher",
@@ -4089,6 +4161,8 @@
   },
   {
     "id": 69038,
+    "beginTime": "2026-06-05 04:00:00",
+    "endTime": "2026-06-19 03:59:59",
     "zones": [
       {
         "name": "Miasmic Fiend - Unfathomable",
@@ -4191,6 +4265,8 @@
   },
   {
     "id": 69039,
+    "beginTime": "2026-06-19 04:00:00",
+    "endTime": "2026-07-03 03:59:59",
     "zones": [
       {
         "name": "Girtablullu",
@@ -4380,6 +4456,8 @@
   },
   {
     "id": 69040,
+    "beginTime": "2026-07-03 04:00:00",
+    "endTime": "2026-07-17 03:59:59",
     "zones": [
       {
         "name": "Girtablullu",
@@ -4575,6 +4653,8 @@
   },
   {
     "id": 69041,
+    "beginTime": "2026-07-17 04:00:00",
+    "endTime": "2026-07-29 03:59:59",
     "zones": [
       {
         "name": "Phaethon of the Scorched Horizon",
@@ -4774,6 +4854,8 @@
   },
   {
     "id": 690421,
+    "beginTime": "2026-07-29 04:00:00",
+    "endTime": "2026-08-14 03:59:59",
     "zones": [
       {
         "name": "Integrated - Girtablullu",
@@ -4887,6 +4969,8 @@
   },
   {
     "id": 690431,
+    "beginTime": "2026-08-14 04:00:00",
+    "endTime": "2026-08-28 03:59:59",
     "zones": [
       {
         "name": "Rewritten - Sanguine Sweeper",
@@ -5006,6 +5090,8 @@
   },
   {
     "id": 690441,
+    "beginTime": "2026-08-28 04:00:00",
+    "endTime": "2026-09-11 03:59:59",
     "zones": [
       {
         "name": "Rewritten - Sanguine Sweeper",
@@ -5125,13 +5211,13 @@
   },
   {
     "id": 690451,
-    "beginTime": "2026-07-30 04:00:00",
-    "endTime": "2026-10-01 03:59:59",
+    "beginTime": "2026-09-11 04:00:00",
+    "endTime": "2026-09-25 03:59:59",
     "zones": [
       {
-        "name": "Integrated Phaethon of the Scorched Horizon",
+        "name": "Integrated - Phaethon of the Scorched Horizon",
         "monsterLevel": 70,
-        "monsterName": "Integrated · Scorched Horizon",
+        "monsterName": "Integrated - Scorched Horizon",
         "monsterDef": 952.8000000000001,
         "monsterImage": "HoloMutant",
         "buffs": [
@@ -5148,7 +5234,7 @@
           {
             "id": "69014603",
             "title": "Sharp Rupture",
-            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When attacks hit enemies, they ignore <color=#2BAD00>15%</color> of enemy <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When an attack hits an enemy, it ignores <color=#2BAD00>15%</color> of the target's <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
           }
         ],
         "hard": true
@@ -5180,7 +5266,7 @@
           {
             "id": "69014603",
             "title": "Sharp Rupture",
-            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When attacks hit enemies, they ignore <color=#2BAD00>15%</color> of enemy <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When an attack hits an enemy, it ignores <color=#2BAD00>15%</color> of the target's <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
           }
         ],
         "hard": false
@@ -5205,7 +5291,7 @@
           {
             "id": "69014603",
             "title": "Sharp Rupture",
-            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When attacks hit enemies, they ignore <color=#2BAD00>15%</color> of enemy <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When an attack hits an enemy, it ignores <color=#2BAD00>15%</color> of the target's <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
           }
         ],
         "hard": false
@@ -5238,7 +5324,7 @@
           {
             "id": "69014603",
             "title": "Sharp Rupture",
-            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When attacks hit enemies, they ignore <color=#2BAD00>15%</color> of enemy <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent PEN Ratio <color=#2BAD00>increases by 5%</color>. When an attack hits an enemy, it ignores <color=#2BAD00>15%</color> of the target's <color=#2EB6FF>Electric RES</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, Sharp DMG <color=#2BAD00>increases by 20%</color> and DEF <color=#2BAD00>increases by 10%</color> for 20s. Repeated triggers reset the duration."
           }
         ],
         "hard": false
@@ -5247,20 +5333,20 @@
   },
   {
     "id": 690461,
-    "beginTime": "2026-07-30 04:00:00",
-    "endTime": "2026-10-01 03:59:59",
+    "beginTime": "2026-09-25 04:00:00",
+    "endTime": "2026-10-09 03:59:59",
     "zones": [
       {
-        "name": "Integrated Phaethon of the Scorched Horizon",
+        "name": "Integrated - Phaethon of the Scorched Horizon",
         "monsterLevel": 70,
-        "monsterName": "Integrated · Scorched Horizon",
+        "monsterName": "Integrated - Scorched Horizon",
         "monsterDef": 952.8000000000001,
         "monsterImage": "HoloMutant",
         "buffs": [
           {
             "id": "69014501",
             "title": "Ultimate Edge",
-            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color>, <color=#FFFFFF>[Special Attack]</color>, or <color=#FFFFFF>[Ultimate]</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Special Attack</color> or <color=#FFFFFF>Ultimate</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014502",
@@ -5292,7 +5378,7 @@
           {
             "id": "69014501",
             "title": "Ultimate Edge",
-            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color>, <color=#FFFFFF>[Special Attack]</color>, or <color=#FFFFFF>[Ultimate]</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Special Attack</color> or <color=#FFFFFF>Ultimate</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014502",
@@ -5324,7 +5410,7 @@
           {
             "id": "69014501",
             "title": "Ultimate Edge",
-            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color>, <color=#FFFFFF>[Special Attack]</color>, or <color=#FFFFFF>[Ultimate]</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Special Attack</color> or <color=#FFFFFF>Ultimate</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014502",
@@ -5357,7 +5443,7 @@
           {
             "id": "69014501",
             "title": "Ultimate Edge",
-            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses <color=#FFFFFF>[EX Special Attack]</color>, <color=#FFFFFF>[Special Attack]</color>, or <color=#FFFFFF>[Ultimate]</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
+            "desc": "· Agent Sharp DMG <color=#2BAD00>increases by 15%</color>, and their DEF <color=#2BAD00>increases by 15%</color>.\n· After an Agent uses an <color=#FFFFFF>EX Special Attack</color>, <color=#FFFFFF>Special Attack</color> or <color=#FFFFFF>Ultimate</color>, attacks ignore <color=#2BAD00>20%</color> of enemy <color=#2EB6FF>Electric RES</color> on hit for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014502",
@@ -5376,8 +5462,8 @@
   },
   {
     "id": 690471,
-    "beginTime": "2026-07-30 04:00:00",
-    "endTime": "2026-10-01 03:59:59",
+    "beginTime": "2026-10-09 04:00:00",
+    "endTime": "2026-10-23 03:59:59",
     "zones": [
       {
         "name": "Integrated - Girtablullu",
@@ -5394,12 +5480,12 @@
           {
             "id": "69014702",
             "title": "Defense Crusher",
-            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG  <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014703",
             "title": "Knife Edge",
-            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>[Stun]</color> specialty, Daze dealt by their <color=#FFFFFF>[EX Special Attack]</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
+            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>Stun</color> specialty, Daze dealt by their <color=#FFFFFF>EX Special Attack</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
           }
         ],
         "hard": true
@@ -5426,12 +5512,12 @@
           {
             "id": "69014702",
             "title": "Defense Crusher",
-            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG  <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014703",
             "title": "Knife Edge",
-            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>[Stun]</color> specialty, Daze dealt by their <color=#FFFFFF>[EX Special Attack]</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
+            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>Stun</color> specialty, Daze dealt by their <color=#FFFFFF>EX Special Attack</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
           }
         ],
         "hard": false
@@ -5458,12 +5544,12 @@
           {
             "id": "69014702",
             "title": "Defense Crusher",
-            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG  <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014703",
             "title": "Knife Edge",
-            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>[Stun]</color> specialty, Daze dealt by their <color=#FFFFFF>[EX Special Attack]</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
+            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>Stun</color> specialty, Daze dealt by their <color=#FFFFFF>EX Special Attack</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
           }
         ],
         "hard": false
@@ -5490,12 +5576,12 @@
           {
             "id": "69014702",
             "title": "Defense Crusher",
-            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG  <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
+            "desc": "· Daze dealt to enemies by Agents <color=#2BAD00>increases by 20%</color>.\n· Agents with the <color=#FFFFFF>Attack</color> specialty have their ATK <color=#2BAD00>increased by 20%</color>. After using <color=#FFFFFF>Ultimate</color>, their CRIT DMG <color=#2BAD00>increases by 50%</color> for 20s. Repeated triggers reset the duration."
           },
           {
             "id": "69014703",
             "title": "Knife Edge",
-            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>[Stun]</color> specialty, Daze dealt by their <color=#FFFFFF>[EX Special Attack]</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses <color=#FFFFFF>[EX Special Attack]</color> or <color=#FFFFFF>[Special Attack]</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
+            "desc": "· Agent DEF <color=#2BAD00>increases by 15%</color>, and their Sharp DMG <color=#2BAD00>increases by 15%</color>.\n· For Agents with the <color=#FFFFFF>Stun</color> specialty, Daze dealt by their <color=#FFFFFF>EX Special Attack</color> <color=#2BAD00>increases by 20%</color>. After an Agent uses an <color=#FFFFFF>EX Special Attack</color> or <color=#FFFFFF>Special Attack</color>, <color=#2EB6FF>Electric DMG</color> and <color=#A6C5FD>Wind DMG</color> <color=#2BAD00>increase by 30%</color> for 15s. Repeated triggers reset the duration."
           }
         ],
         "hard": false

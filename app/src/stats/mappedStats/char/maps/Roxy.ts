@@ -27,7 +27,7 @@ const dm = {
       data_gen.skillParams['special']['EXSpecialAttackDontCatchAChill'],
     EXSpecialAttackKindlyRestInPeace:
       data_gen.skillParams['special']['EXSpecialAttackKindlyRestInPeace'],
-    StormsEye: data_gen.skillParams['special']['StormsEye'],
+    EyeOfTheStorm: data_gen.skillParams['special']['EyeOfTheStorm'],
   },
   chain: {
     ChainAttackGaleBurialGreatHammer:

@@ -70,6 +70,7 @@ bun biome check --write --formatter-enabled=true --linter-enabled=false --assist
 
 # Codegen & data
 bun run gen-file                   # Regenerate generated files (needs submodule data)
+bun nx run zzz-dm:get-nanoka       # Fetch Nanoka datamine JSON into app/src/dm/NanokaData
 bun run reload-dm                  # git submodule update --init
 bun run update-dm                  # git submodule update --remote
 
