@@ -17,6 +17,7 @@ import {
   percent,
   register,
   registerBuff,
+  type TagMapNodeEntries,
   target,
   team,
   teamBuff,
@@ -70,6 +71,37 @@ const core_crimson_crit_ = ownBuff.combat.crit_.add(
   crimsonInscription.ifOn(subscript(char.core, dm.core.crit_))
 )
 
+// Always-on part: while using Chain Attack, Ultimate, Counter Assist, or
+// Assist Follow-Up the same CRIT / Gash buffs apply even outside Crimson
+// Inscription. Scoped per damage type and gated on Crimson being OFF so they
+// don't double-count with the global buffs above when in Crimson state.
+const crimsonSkillDmgTypes = [
+  'chain',
+  'ult',
+  'counterAssist',
+  'assistFollowUp',
+] as const
+// Per-damage-type entries (one buff name per type, as meta generation keeps a
+// single listing tag per buff name)
+const core_crimson_skill_crit = Object.fromEntries(
+  crimsonSkillDmgTypes.map((dmgType) => [
+    dmgType,
+    ownBuff.combat.crit_.addWithDmgType(
+      dmgType,
+      crimsonInscription.ifOff(subscript(char.core, dm.core.crit_))
+    ),
+  ])
+) as Record<(typeof crimsonSkillDmgTypes)[number], TagMapNodeEntries>
+const core_crimson_skill_gashBuildup = Object.fromEntries(
+  crimsonSkillDmgTypes.map((dmgType) => [
+    dmgType,
+    ownBuff.combat.gashBuildup_.addWithDmgType(
+      dmgType,
+      crimsonInscription.ifOff(subscript(char.core, dm.core.gashBuildup_))
+    ),
+  ])
+) as Record<(typeof crimsonSkillDmgTypes)[number], TagMapNodeEntries>
+
 // Perfect Dodge during Starforging / SubduingAxe: DMG +15% for remainder
 const core_perfectDodge_dmg_ = ownBuff.combat.common_dmg_.add(
   perfectDodge.ifOn(percent(dm.core.perfectDodgeDmg_))
@@ -111,6 +143,21 @@ const m2_electric_resIgn_ = ownBuff.combat.resIgn_.electric.add(
     m2_crimsonInscription.ifOn(percent(dm.m2.electric_resIgn_))
   )
 )
+// M2 always-on part for Chain / Ultimate / Counter Assist / Assist Follow-Up,
+// gated off while in Crimson Inscription to avoid double-counting (see above)
+const m2_skill_electric_resIgn = Object.fromEntries(
+  crimsonSkillDmgTypes.map((dmgType) => [
+    dmgType,
+    ownBuff.combat.resIgn_.electric.addWithDmgType(
+      dmgType,
+      cmpGE(
+        char.mindscape,
+        2,
+        m2_crimsonInscription.ifOff(percent(dm.m2.electric_resIgn_))
+      )
+    ),
+  ])
+) as Record<(typeof crimsonSkillDmgTypes)[number], TagMapNodeEntries>
 
 // M4: DMG +20% for 3rd hit of Starforging (hit 2), Chain and Ult — specific overrides
 // Create separate buffs so UI can display "Starforging #3 DMG 20%" etc, not generic "Chain DMG"
@@ -202,6 +249,35 @@ const sheet = register(
   registerBuff('core_critPerCritDmg', core_critPerCritDmg),
   registerBuff('core_crimson_crit_', core_crimson_crit_),
   registerBuff('core_crimson_gashBuildup_', core_crimson_gashBuildup_),
+  registerBuff(
+    'core_crimson_skill_crit_chain_',
+    core_crimson_skill_crit['chain']
+  ),
+  registerBuff('core_crimson_skill_crit_ult_', core_crimson_skill_crit['ult']),
+  registerBuff(
+    'core_crimson_skill_crit_counterAssist_',
+    core_crimson_skill_crit['counterAssist']
+  ),
+  registerBuff(
+    'core_crimson_skill_crit_assistFollowUp_',
+    core_crimson_skill_crit['assistFollowUp']
+  ),
+  registerBuff(
+    'core_crimson_skill_gashBuildup_chain_',
+    core_crimson_skill_gashBuildup['chain']
+  ),
+  registerBuff(
+    'core_crimson_skill_gashBuildup_ult_',
+    core_crimson_skill_gashBuildup['ult']
+  ),
+  registerBuff(
+    'core_crimson_skill_gashBuildup_counterAssist_',
+    core_crimson_skill_gashBuildup['counterAssist']
+  ),
+  registerBuff(
+    'core_crimson_skill_gashBuildup_assistFollowUp_',
+    core_crimson_skill_gashBuildup['assistFollowUp']
+  ),
   registerBuff('core_perfectDodge_dmg_', core_perfectDodge_dmg_),
   registerBuff(
     'ability_remnant_laceration_',
@@ -213,6 +289,22 @@ const sheet = register(
   registerBuff('m1_maim_dmg_', m1_maim_dmg_),
   registerBuff('m1_maim_mult_display_', m1_maim_mult_display_),
   registerBuff('m2_electric_resIgn_', m2_electric_resIgn_),
+  registerBuff(
+    'm2_skill_electric_resIgn_chain_',
+    m2_skill_electric_resIgn['chain']
+  ),
+  registerBuff(
+    'm2_skill_electric_resIgn_ult_',
+    m2_skill_electric_resIgn['ult']
+  ),
+  registerBuff(
+    'm2_skill_electric_resIgn_counterAssist_',
+    m2_skill_electric_resIgn['counterAssist']
+  ),
+  registerBuff(
+    'm2_skill_electric_resIgn_assistFollowUp_',
+    m2_skill_electric_resIgn['assistFollowUp']
+  ),
   registerBuff('m4_starforging_dmg_', m4_starforging_dmg_),
   registerBuff('m4_resonant_dmg_', m4_resonant_dmg_),
   registerBuff('m4_trial_dmg_', m4_trial_dmg_)

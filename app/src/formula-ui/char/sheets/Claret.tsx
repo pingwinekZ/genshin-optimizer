@@ -1,27 +1,102 @@
 import type { CharacterKey } from '../../../consts'
+import { useCharacter } from '../../../db-ui'
 import { Claret } from '../../../formula'
-import { GameDesc } from '../../../i18n'
+import { GameDesc, GameDescSlice } from '../../../i18n'
 import { trans } from '../../util'
-import { CoreGameDesc, createBaseSheet, fieldForBuff } from '../sheetUtil'
+import { createBaseSheet, fieldForBuff } from '../sheetUtil'
 
 const key: CharacterKey = 'Claret'
 const [, ch] = trans('char', key)
 const cond = Claret.conditionals
 const buff = Claret.buffs
 const formula = Claret.formulas
+const ns = 'char_Claret_gen'
+
+function useCoreKey(paragraph: number) {
+  const char = useCharacter(key)
+  const coreLevel = char?.core ?? 0
+  return `core.desc.${coreLevel}.${paragraph}`
+}
+
+function CritPerCritDmgDescription() {
+  const key18 = useCoreKey(1)
+  return (
+    <GameDescSlice
+      ns={ns}
+      key18={key18}
+      from="For every 1% of Claret's initial CRIT DMG"
+      to="0.35%"
+      toExact
+    />
+  )
+}
+
+function CrimsonInscriptionDescription() {
+  const key18 = useCoreKey(4)
+  return (
+    <GameDescSlice
+      ns={ns}
+      key18={key18}
+      from="While Claret is in the Crimson Inscription state"
+      to="Gash Buildup Rate increases by"
+    />
+  )
+}
+
+// Always-on part of the same effect: applies to Chain / Ultimate / Counter
+// Assist / Assist Follow-Up even outside Crimson Inscription. While in
+// Crimson Inscription (toggle below) it extends to all attacks.
+function M2SkillDescription() {
+  return (
+    <GameDescSlice
+      ns={ns}
+      key18="mindscapes.2.desc"
+      from="While Claret is in the Crimson Inscription state"
+      to="Electric RES"
+    />
+  )
+}
+
+function PerfectDodgeDescription() {
+  const key18 = useCoreKey(4)
+  return (
+    <GameDescSlice
+      ns={ns}
+      key18={key18}
+      from="Triggering a Perfect Dodge"
+      to="remainder of the skill"
+    />
+  )
+}
 
 const sheet = createBaseSheet(key, {
   core: [
     {
       type: 'fields',
       header: { icon: null, text: ch('core_critPerCritDmg_header') },
+      description: <CritPerCritDmgDescription />,
       fields: [fieldForBuff(buff.core_critPerCritDmg)],
+    },
+    {
+      type: 'fields',
+      header: { icon: null, text: ch('crimsonSkill_header') },
+      description: <CrimsonInscriptionDescription />,
+      fields: [
+        fieldForBuff(buff.core_crimson_skill_crit_chain_),
+        fieldForBuff(buff.core_crimson_skill_crit_ult_),
+        fieldForBuff(buff.core_crimson_skill_crit_counterAssist_),
+        fieldForBuff(buff.core_crimson_skill_crit_assistFollowUp_),
+        fieldForBuff(buff.core_crimson_skill_gashBuildup_chain_),
+        fieldForBuff(buff.core_crimson_skill_gashBuildup_ult_),
+        fieldForBuff(buff.core_crimson_skill_gashBuildup_counterAssist_),
+        fieldForBuff(buff.core_crimson_skill_gashBuildup_assistFollowUp_),
+      ],
     },
     {
       type: 'conditional',
       conditional: {
         label: ch('crimsonInscriptionCond'),
-        description: <CoreGameDesc characterKey={key} paragraph={4} />,
+        description: <CrimsonInscriptionDescription />,
         metadata: cond.crimsonInscription,
         fields: [
           fieldForBuff(buff.core_crimson_crit_),
@@ -34,7 +109,7 @@ const sheet = createBaseSheet(key, {
       type: 'conditional',
       conditional: {
         label: ch('perfectDodgeCond'),
-        description: <CoreGameDesc characterKey={key} paragraph={4} />,
+        description: <PerfectDodgeDescription />,
         metadata: cond.perfectDodge,
         fields: [fieldForBuff(buff.core_perfectDodge_dmg_)],
       },
@@ -55,6 +130,14 @@ const sheet = createBaseSheet(key, {
     {
       type: 'fields',
       header: { icon: null, text: ch('m1_gashBuildup_header') },
+      description: (
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.1.desc"
+          from="When Claret's attacks hit enemies and trigger Laceration"
+          to="Gash Buildup Rate increases by 20%"
+        />
+      ),
       fields: [
         {
           title: ch('m1_gashBuildup_title'),
@@ -65,6 +148,14 @@ const sheet = createBaseSheet(key, {
     {
       type: 'fields',
       header: { icon: null, text: ch('m1_maim_header') },
+      description: (
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.1.desc"
+          from="The DMG Multiplier of Maim"
+          to="130% of its original value"
+        />
+      ),
       fields: [
         {
           title: ch('m1_maim'),
@@ -85,12 +176,21 @@ const sheet = createBaseSheet(key, {
   ],
   m2: [
     {
+      type: 'fields',
+      header: { icon: null, text: ch('m2Skill_header') },
+      description: <M2SkillDescription />,
+      fields: [
+        fieldForBuff(buff.m2_skill_electric_resIgn_chain_),
+        fieldForBuff(buff.m2_skill_electric_resIgn_ult_),
+        fieldForBuff(buff.m2_skill_electric_resIgn_counterAssist_),
+        fieldForBuff(buff.m2_skill_electric_resIgn_assistFollowUp_),
+      ],
+    },
+    {
       type: 'conditional',
       conditional: {
         label: ch('m2Cond'),
-        description: (
-          <GameDesc ns="char_Claret_gen" key18="mindscapes.2.desc" />
-        ),
+        description: <M2SkillDescription />,
         metadata: cond.m2_crimsonInscription,
         fields: [fieldForBuff(buff.m2_electric_resIgn_)],
         linked: ['crimsonInscription'],
@@ -101,6 +201,14 @@ const sheet = createBaseSheet(key, {
     {
       type: 'fields',
       header: { icon: null, text: ch('m4_header') },
+      description: (
+        <GameDescSlice
+          ns={ns}
+          key18="mindscapes.4.desc"
+          from="DMG dealt by Basic Attack: Bloodbloom Oath - Starforging's 3rd hit"
+          to="increases by 20%"
+        />
+      ),
       fields: [
         {
           title: ch('m4_starforging'),
