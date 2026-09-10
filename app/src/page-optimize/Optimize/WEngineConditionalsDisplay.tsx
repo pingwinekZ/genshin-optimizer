@@ -7,7 +7,10 @@ import type {
   Header,
   TagField,
 } from '@zenless-optimizer/game-opt/sheet-ui'
-import { TagFieldDisplay } from '@zenless-optimizer/game-opt/sheet-ui'
+import {
+  isTagField,
+  TagFieldDisplay,
+} from '@zenless-optimizer/game-opt/sheet-ui'
 import type { ReactNode } from 'react'
 import { memo, useContext, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -19,7 +22,10 @@ import {
   useZzzCalcContext,
   wengineUiSheets,
 } from '../../formula-ui'
-import { buffAppliesToMainUnit } from '../../formula-ui/teammate'
+import {
+  buffAppliesToMainUnit,
+  buffAppliesToSelf,
+} from '../../formula-ui/teammate'
 import { GameDesc, GameText } from '../../i18n'
 import { getCharStat } from '../../stats'
 import {
@@ -690,6 +696,43 @@ const WeepingCradleDmgDesc = fromMarkerDesc(
   'Attacks from'
 )
 
+/** CRIT Rate portion of CrimsonMoonCasket's phase description (first sentence). */
+const CrimsonMoonCasketCritDesc = firstSentenceDesc(
+  'wengine_CrimsonMoonCasket_gen'
+)
+
+/** Wind RES Ignore portion of CrimsonMoonCasket's phase description (second sentence). */
+function CrimsonMoonCasketResIgnDesc({ phase }: { phase: number }) {
+  const { t } = useTranslation('wengine_CrimsonMoonCasket_gen')
+  const fullDesc = t(`wengine_CrimsonMoonCasket_gen:phaseDescs.${phase - 1}`)
+  const firstDot = fullDesc.indexOf('. ')
+  if (firstDot === -1) return <GameText text={fullDesc} />
+  const secondDot = fullDesc.indexOf('. ', firstDot + 2)
+  if (secondDot === -1) return <GameText text={fullDesc.slice(firstDot + 2)} />
+  return <GameText text={fullDesc.slice(firstDot + 2, secondDot + 1)} />
+}
+
+/** Conditional portion of CrimsonMoonCasket's phase description (from "When the equipper uses" to end). */
+const CrimsonMoonCasketCondDesc = fromMarkerDesc(
+  'wengine_CrimsonMoonCasket_gen',
+  'When the equipper uses'
+)
+
+/** CRIT Rate & Electric DMG portion of CrimsonThirst's phase description (first sentence). */
+const CrimsonThirstPassiveDesc = firstSentenceDesc('wengine_CrimsonThirst_gen')
+
+/** Conditional portion of CrimsonThirst's phase description (from "When" to end). */
+const CrimsonThirstCondDesc = fromMarkerDesc(
+  'wengine_CrimsonThirst_gen',
+  'When '
+)
+
+/** DEF portion of CattyLuck's phase description (first sentence). */
+const CattyLuckPassiveDesc = firstSentenceDesc('wengine_CattyLuck_gen')
+
+/** Conditional portion of CattyLuck's phase description (from "When" to end). */
+const CattyLuckCondDesc = fromMarkerDesc('wengine_CattyLuck_gen', 'When ')
+
 const WenginePassiveGroup = memo(function WenginePassiveGroup({
   wengineKey,
   header,
@@ -951,9 +994,14 @@ export function WEngineConditionalsDisplay({
           if (!result[condName]) result[condName] = []
           result[condName].push(...teamFields)
         } else {
-          // Main character view: include all fields
+          // Main character view: include fields that apply to self.
+          // Hide squad-only buffs (e.g. notOwnBuff team DMG) from own view.
           if (!result[condName]) result[condName] = []
-          result[condName].push(...fieldsArr)
+          result[condName].push(
+            ...fieldsArr.filter(
+              (f: Field) => !isTagField(f) || buffAppliesToSelf(f.fieldRef)
+            )
+          )
         }
       }
     })
@@ -1238,6 +1286,18 @@ export function WEngineConditionalsDisplay({
                 ) : wengineKey === 'TremorTrigramVessel' &&
                   firstFieldName === 'exSpecial_dmg_' ? (
                   <TremorTrigramVesselDmgDesc phase={phase} />
+                ) : wengineKey === 'CrimsonMoonCasket' &&
+                  firstFieldName === 'passive_crit_' ? (
+                  <CrimsonMoonCasketCritDesc phase={phase} />
+                ) : wengineKey === 'CrimsonMoonCasket' &&
+                  firstFieldName === 'passive_windResIgn_' ? (
+                  <CrimsonMoonCasketResIgnDesc phase={phase} />
+                ) : wengineKey === 'CrimsonThirst' &&
+                  firstFieldName === 'passive_crit_' ? (
+                  <CrimsonThirstPassiveDesc phase={phase} />
+                ) : wengineKey === 'CattyLuck' &&
+                  firstFieldName === 'passive_def_' ? (
+                  <CattyLuckPassiveDesc phase={phase} />
                 ) : undefined
 
               return group.header ? (
@@ -1520,6 +1580,13 @@ export function WEngineConditionalsDisplay({
                 <WeepingCradleOffFieldDesc phase={phase} />
               ) : wengineKey === 'WeepingCradle' && condName === 'stacks' ? (
                 <WeepingCradleDmgDesc phase={phase} />
+              ) : wengineKey === 'CrimsonMoonCasket' &&
+                condName === 'exSpecialWindHit' ? (
+                <CrimsonMoonCasketCondDesc phase={phase} />
+              ) : wengineKey === 'CrimsonThirst' && condName === 'exOrMaim' ? (
+                <CrimsonThirstCondDesc phase={phase} />
+              ) : wengineKey === 'CattyLuck' && condName === 'exSpecialUsed' ? (
+                <CattyLuckCondDesc phase={phase} />
               ) : undefined
             }
           />

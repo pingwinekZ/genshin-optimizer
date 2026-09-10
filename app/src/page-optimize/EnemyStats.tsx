@@ -340,6 +340,7 @@ function EnemyStatDisplay({
           onChange={setValue}
           placeholder="Stat Value"
           size="sm"
+          suffix="%"
         />
         <ActionIcon aria-label="Delete Enemy Stat" onClick={onDelete}>
           <IconTrash size={16} />

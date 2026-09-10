@@ -568,9 +568,9 @@ export const formulas = {
       name: 'EXSpecialAttackKindlyRestInPeace_1_anomBuildup',
     },
   },
-  StormsEye_0_dmg: {
+  EyeOfTheStorm_0_dmg: {
     sheet: 'Roxy',
-    name: 'StormsEye_0_dmg',
+    name: 'EyeOfTheStorm_0_dmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -579,12 +579,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_0_dmg',
+      name: 'EyeOfTheStorm_0_dmg',
     },
   },
-  StormsEye_0_daze: {
+  EyeOfTheStorm_0_daze: {
     sheet: 'Roxy',
-    name: 'StormsEye_0_daze',
+    name: 'EyeOfTheStorm_0_daze',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -593,12 +593,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_0_daze',
+      name: 'EyeOfTheStorm_0_daze',
     },
   },
-  StormsEye_0_anomBuildup: {
+  EyeOfTheStorm_0_anomBuildup: {
     sheet: 'Roxy',
-    name: 'StormsEye_0_anomBuildup',
+    name: 'EyeOfTheStorm_0_anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -607,12 +607,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_0_anomBuildup',
+      name: 'EyeOfTheStorm_0_anomBuildup',
     },
   },
-  StormsEye_1_dmg: {
+  EyeOfTheStorm_1_dmg: {
     sheet: 'Roxy',
-    name: 'StormsEye_1_dmg',
+    name: 'EyeOfTheStorm_1_dmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -621,12 +621,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_1_dmg',
+      name: 'EyeOfTheStorm_1_dmg',
     },
   },
-  StormsEye_1_daze: {
+  EyeOfTheStorm_1_daze: {
     sheet: 'Roxy',
-    name: 'StormsEye_1_daze',
+    name: 'EyeOfTheStorm_1_daze',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -635,12 +635,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_1_daze',
+      name: 'EyeOfTheStorm_1_daze',
     },
   },
-  StormsEye_1_anomBuildup: {
+  EyeOfTheStorm_1_anomBuildup: {
     sheet: 'Roxy',
-    name: 'StormsEye_1_anomBuildup',
+    name: 'EyeOfTheStorm_1_anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -649,12 +649,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_1_anomBuildup',
+      name: 'EyeOfTheStorm_1_anomBuildup',
     },
   },
-  StormsEye_2_dmg: {
+  EyeOfTheStorm_2_dmg: {
     sheet: 'Roxy',
-    name: 'StormsEye_2_dmg',
+    name: 'EyeOfTheStorm_2_dmg',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -663,12 +663,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_2_dmg',
+      name: 'EyeOfTheStorm_2_dmg',
     },
   },
-  StormsEye_2_daze: {
+  EyeOfTheStorm_2_daze: {
     sheet: 'Roxy',
-    name: 'StormsEye_2_daze',
+    name: 'EyeOfTheStorm_2_daze',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -677,12 +677,12 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_2_daze',
+      name: 'EyeOfTheStorm_2_daze',
     },
   },
-  StormsEye_2_anomBuildup: {
+  EyeOfTheStorm_2_anomBuildup: {
     sheet: 'Roxy',
-    name: 'StormsEye_2_anomBuildup',
+    name: 'EyeOfTheStorm_2_anomBuildup',
     tag: {
       et: 'own',
       qt: 'formula',
@@ -691,7 +691,7 @@ export const formulas = {
       attribute: 'wind',
       damageType1: 'special',
       skillType1: 'specialSkill',
-      name: 'StormsEye_2_anomBuildup',
+      name: 'EyeOfTheStorm_2_anomBuildup',
     },
   },
   ChainAttackGaleBurialGreatHammer_0_dmg: {
@@ -818,6 +818,48 @@ export const formulas = {
       damageType1: 'quickAssist',
       skillType1: 'assistSkill',
       name: 'AssistMoreOvertime_0_anomBuildup',
+    },
+  },
+  AssistMoreOvertime_1_dmg: {
+    sheet: 'Roxy',
+    name: 'AssistMoreOvertime_1_dmg',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'standardDmg',
+      sheet: 'Roxy',
+      attribute: 'wind',
+      damageType1: 'quickAssist',
+      skillType1: 'assistSkill',
+      name: 'AssistMoreOvertime_1_dmg',
+    },
+  },
+  AssistMoreOvertime_1_daze: {
+    sheet: 'Roxy',
+    name: 'AssistMoreOvertime_1_daze',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'dazeBuildup',
+      sheet: 'Roxy',
+      attribute: 'wind',
+      damageType1: 'quickAssist',
+      skillType1: 'assistSkill',
+      name: 'AssistMoreOvertime_1_daze',
+    },
+  },
+  AssistMoreOvertime_1_anomBuildup: {
+    sheet: 'Roxy',
+    name: 'AssistMoreOvertime_1_anomBuildup',
+    tag: {
+      et: 'own',
+      qt: 'formula',
+      q: 'anomBuildup',
+      sheet: 'Roxy',
+      attribute: 'wind',
+      damageType1: 'quickAssist',
+      skillType1: 'assistSkill',
+      name: 'AssistMoreOvertime_1_anomBuildup',
     },
   },
   QuickAssistAtYourService_0_dmg: {

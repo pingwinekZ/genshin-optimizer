@@ -1,7 +1,7 @@
 import { ColorText } from '@zenless-optimizer/common/ui'
 import type { CharacterKey } from '../../../consts'
 import { Koleda } from '../../../formula'
-import { GameDesc } from '../../../i18n'
+import { GameDesc, GameDescSlice } from '../../../i18n'
 import { trans } from '../../util'
 import {
   AbilityBodyText,
@@ -29,6 +29,28 @@ function AbilityDescription() {
 }
 
 const sheet = createBaseSheet(key, {
+  perSkillAbility: {
+    basic: {
+      BasicAttackSmashNBash: [
+        {
+          type: 'conditional',
+          conditional: {
+            label: ch('furnaceFireCond'),
+            description: (
+              <GameDescSlice
+                ns="char_Koleda_gen"
+                key18="basic.BasicAttackSmashNBash.desc.5"
+                from="When <ct color=#FFFFFF>Furnace Fire</ct> is consumed"
+                to="Repeated triggers reset the duration."
+              />
+            ),
+            metadata: cond.furnace_fire,
+            fields: [fieldForBuff(buff.basic_common_dmg_)],
+          },
+        },
+      ],
+    },
+  },
   core: [
     {
       type: 'fields',

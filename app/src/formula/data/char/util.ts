@@ -312,7 +312,7 @@ function inferDamageType(key: CharacterKey, abilityName: string): DamageType {
       return 'assistFollowUp'
     if (key === 'Claret' && abilityName === 'CounterAssistGiveNotAnInchOfSteel')
       return 'counterAssist'
-    if (key === 'Roxy' && abilityName === 'StormsEye') return 'special'
+    if (key === 'Roxy' && abilityName === 'EyeOfTheStorm') return 'special'
     if (key === 'Roxy' && abilityName === 'AssistMoreOvertime')
       return 'quickAssist'
     throw new Error(

@@ -17,6 +17,7 @@ export const conditionals = {
     min: 0,
     max: 2,
   },
+  furnace_fire: { sheet: 'Koleda', name: 'furnace_fire', type: 'bool' },
   quick_use: {
     sheet: 'Koleda',
     name: 'quick_use',

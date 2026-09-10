@@ -7,7 +7,6 @@ import {
 } from '@zenless-optimizer/pando/engine'
 import { type CharacterKey } from '../../../../consts'
 import { allStats, mappedStats } from '../../../../stats'
-import { isStunned } from '../../common/enemy'
 import {
   allBoolConditionals,
   allNumConditionals,
@@ -35,7 +34,9 @@ const baseTag = getBaseTag(data_gen)
 
 const { char } = own
 
-const { quick_use } = allBoolConditionals(key, undefined, { quick_use: 1 })
+const { quick_use, furnace_fire } = allBoolConditionals(key, undefined, {
+  quick_use: 1,
+})
 const { exSpecial_debuff } = allNumConditionals(key, true, 0, dm.ability.stacks)
 const { charge } = allNumConditionals(key, true, 0, dm.m4.stacks, undefined, {
   charge: 4,
@@ -48,6 +49,21 @@ const core_exSpecial_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
 const core_basic_dazeInc_ = ownBuff.combat.dazeInc_.addWithDmgType(
   'basic',
   percent(subscript(char.core, dm.core.dazeInc_))
+)
+
+// Additional Ability trigger: another squad member is a Rupture or Armorer
+// character or shares the same Attribute or Faction. Display-only marker so
+// the sheet can dim the ability description on the trigger alone, independent
+// of the EX Special debuff stack count (mirrors Lighter's `ability_active`).
+const ability_trigger_met = cmpGE(
+  sum(
+    team.common.count.fire,
+    team.common.count.withFaction('BelebogHeavyIndustries'),
+    team.common.count.withSpecialty('rupture'),
+    team.common.count.withSpecialty('armorer')
+  ),
+  3,
+  1
 )
 
 const sheet = register(
@@ -159,6 +175,14 @@ const sheet = register(
     undefined,
     false
   ),
+  // Basic Attack: consuming Furnace Fire grants all Agents 35% more damage
+  // for 40s. No data in dm (static text value).
+  registerBuff(
+    'basic_common_dmg_',
+    teamBuff.combat.common_dmg_.add(furnace_fire.ifOn(percent(0.35))),
+    undefined,
+    true
+  ),
   registerBuff(
     'ability_chain_dmg_',
     teamBuff.combat.dmg_.addWithDmgType(
@@ -167,14 +191,22 @@ const sheet = register(
         sum(
           team.common.count.fire,
           team.common.count.withFaction('BelebogHeavyIndustries'),
-          team.common.count.withSpecialty('rupture')
+          team.common.count.withSpecialty('rupture'),
+          team.common.count.withSpecialty('armorer')
         ),
         3,
-        isStunned.ifOn(prod(exSpecial_debuff, percent(dm.ability.chain_dmg_)))
+        prod(exSpecial_debuff, percent(dm.ability.chain_dmg_))
       )
     ),
     undefined,
     true
+  ),
+  registerBuff(
+    'ability_active',
+    teamBuff.combat.dmg_.fire.add(ability_trigger_met),
+    undefined,
+    undefined,
+    false
   ),
   registerBuff(
     'm1_special_dazeInc_',

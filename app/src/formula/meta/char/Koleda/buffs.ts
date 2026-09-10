@@ -39,6 +39,18 @@ export const buffs = {
     },
     team: false,
   },
+  basic_common_dmg_: {
+    sheet: 'Koleda',
+    name: 'basic_common_dmg_',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'common_dmg_',
+      sheet: 'Koleda',
+      name: 'basic_common_dmg_',
+    },
+    team: true,
+  },
   ability_chain_dmg_: {
     sheet: 'Koleda',
     name: 'ability_chain_dmg_',
@@ -51,6 +63,19 @@ export const buffs = {
       name: 'ability_chain_dmg_',
     },
     team: true,
+  },
+  ability_active: {
+    sheet: 'Koleda',
+    name: 'ability_active',
+    tag: {
+      et: 'display',
+      qt: 'combat',
+      q: 'dmg_',
+      sheet: 'Koleda',
+      attribute: 'fire',
+      name: 'ability_active',
+    },
+    team: false,
   },
   m1_special_dazeInc_: {
     sheet: 'Koleda',

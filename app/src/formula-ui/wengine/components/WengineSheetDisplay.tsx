@@ -11,6 +11,7 @@ import { wengineAsset } from '../../../assets'
 import { getWengineStat, getWengineStats } from '../../../stats'
 import { StatDisplay, WengineName, ZCard } from '../../../ui'
 import type { IWengine } from '../../../zood'
+import { filterDocumentsForSelf } from '../../teammate/buffAppliesToMainUnit'
 import { wengineUiSheets } from '../sheets'
 
 export function WengineSheetDisplay({
@@ -70,11 +71,14 @@ function WengineUiSheetElement({
   uiSheetElement: UISheetElement
 }) {
   const { documents, title } = uiSheetElement
+  // Hide buffs that only apply to other squad members (e.g. `notOwnBuff`
+  // team buffs) when viewing the owner's own sheet.
+  const selfDocuments = filterDocumentsForSelf(documents)
   return (
     <Box p="md">
       <Title order={5}>{title}</Title>
       <Stack gap={4}>
-        {documents.map((doc, i) => (
+        {selfDocuments.map((doc, i) => (
           <DocumentDisplay
             key={i}
             document={doc}

@@ -1,10 +1,19 @@
 {
-  "coreCond": "Core Passive",
-  "windEnergyCond": "Wind Energy",
-  "ability_header": "Additional Ability",
-  "abilityCond": "Porcelloy Heart · DMG & Daze",
-  "m1Cond": "M1 · Versatile Attendant",
-  "m2Cond": "M2 · Clocking Out Myth",
-  "m4Cond": "M4 · R.I.P.",
-  "m6Cond": "M6 · Eternity and the Clockwork Doll"
+  "core_regen_header": "ER to ATK & Impact",
+  "contaminationSurgeCond": "Contamination / Cleanse · CD / DMG",
+  "ability_header": "LVL to DMG",
+  "ability_stun_header": "Hit Enemy · Stun DMG",
+  "windsweptCond": "Windswept · DMG",
+  "exAnomalyCond": "EX Special Used · AB",
+  "m1Cond": "Kindly Rest in Peace Hit · RES Reduction",
+  "m1_crit_header": "CD",
+  "m2_exDaze_header": "Daze",
+  "m2Cond": "Don't Catch a Chill Hit · Stun DMG",
+  "m4_ult_header": "DMG & Daze",
+  "m4_ult_dmg_": "Requiem for the Night-Burial DMG",
+  "m4_ult_daze_": "Requiem for the Night-Burial Daze",
+  "m6_res_header": "RES Ignore",
+  "m6Cond": "DMG",
+  "m6_afterecho_mult_display_": "Eye of the Storm #3 DMG Multiplier",
+  "m6_afterecho_daze_": "Eye of the Storm #3 Daze"
 }

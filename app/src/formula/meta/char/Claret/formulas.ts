@@ -1214,17 +1214,4 @@ export const formulas = {
       name: 'AssistFollowUpBloodbloomOathHammerIntoShape_0_gashBuildup',
     },
   },
-  m6_maim: {
-    sheet: 'Claret',
-    name: 'm6_maim',
-    tag: {
-      et: 'own',
-      qt: 'formula',
-      q: 'maimDmg',
-      sheet: 'Claret',
-      attribute: 'electric',
-      damageType1: 'chain',
-      name: 'm6_maim',
-    },
-  },
 } as const

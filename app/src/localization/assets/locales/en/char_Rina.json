@@ -1,9 +1,9 @@
 {
-  "minionsOnFieldCond": "Minions on Field · PEN Ratio",
-  "shockedEnemyCond": "Shocked Enemy · Electric DMG",
-  "activeCharCond": "Enter Combat or Switch In · DMG",
-  "minionsOnFieldEnerRegenCond": "Minions on Field · Energy Regen",
-  "exSpecialChainUltHitCond": "EX Special / Chain / Ultimate Hit · Electric DMG",
-  "potentialMinionsOnFieldCond": "Minions on Field · ATK & DEF",
-  "potential_pen_header": "PEN Ratio"
+  "minionsOnFieldCond": "Minions on Field · PEN",
+  "shockedEnemyCond": "Shocked Enemy · DMG",
+  "activeCharCond": "Enter Combat / Switch In · DMG",
+  "minionsOnFieldEnerRegenCond": "Minions on Field · ER",
+  "exSpecialChainUltHitCond": "EX Special / Chain / Ultimate Hit · DMG",
+  "potentialMinionsOnFieldCond": "Minions on Field · PEN to ATK & DEF",
+  "potential_pen_header": "PEN"
 }
