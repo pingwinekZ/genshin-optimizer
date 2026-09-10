@@ -181,7 +181,9 @@ const sheet = register(
         prod(percent(subscript(char.core, dm.core.stun_)), percent(0.01)),
         cmpGE(char.mindscape, 2, percent(dm.m2.stun_mult_), percent(1))
       )
-    )
+    ),
+    undefined,
+    true
   ),
   registerBuff(
     'ability_basic_dazeInc_',
@@ -211,7 +213,9 @@ const sheet = register(
     'm1_defRed_',
     enemyDebuff.common.defRed_.add(
       cmpGE(char.mindscape, 1, m1_flash_max.ifOn(dm.m1.defRed_))
-    )
+    ),
+    undefined,
+    true
   ),
   registerBuff(
     'm1_crit_',
@@ -229,7 +233,9 @@ const sheet = register(
     'm6_resRed_',
     enemyDebuff.common.resRed_.add(
       cmpGE(char.mindscape, 6, moonlit_blossoms_hit.ifOn(dm.m6.resRed_))
-    )
+    ),
+    undefined,
+    true
   ),
   registerBuff('m6_crit_dmg_', m6_crit_dmg_, undefined, undefined, false)
 )

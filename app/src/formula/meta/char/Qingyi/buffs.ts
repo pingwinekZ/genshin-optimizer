@@ -46,7 +46,7 @@ export const buffs = {
       sheet: 'Qingyi',
       name: 'core_stun_',
     },
-    team: false,
+    team: true,
   },
   ability_basic_dazeInc_: {
     sheet: 'Qingyi',
@@ -83,7 +83,7 @@ export const buffs = {
       sheet: 'Qingyi',
       name: 'm1_defRed_',
     },
-    team: false,
+    team: true,
   },
   m1_crit_: {
     sheet: 'Qingyi',
@@ -119,7 +119,7 @@ export const buffs = {
       sheet: 'Qingyi',
       name: 'm6_resRed_',
     },
-    team: false,
+    team: true,
   },
   m6_crit_dmg_: {
     sheet: 'Qingyi',
