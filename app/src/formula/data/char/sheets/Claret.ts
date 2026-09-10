@@ -201,21 +201,15 @@ const m4TrialOverride = dmgDazeAndAnomOverride(
   m4_trial_dmg_
 )
 
+// M1 Maim multiplier applies ONLY to the Maim hit (index 2) of
+// Special Attack: Bloodbloom Oath - Cleaving Gold and Iron. It is passed as an
+// instance-scoped extra (see registerFormula) and registered display-only
+// below so it never leaks globally.
 const m1MaimOverride = dmgDazeAndAnomOverride(
   dm,
   'special',
   'SpecialAttackBloodbloomOathCleavingGoldAndIron',
   2,
-  { ...baseTag, damageType1: 'special' },
-  'def',
-  undefined,
-  m1_maim_dmg_
-)
-const m1BloodBurialOverride = dmgDazeAndAnomOverride(
-  dm,
-  'special',
-  'SpecialAttackBloodbloomOathBloodBurialAssault',
-  0,
   { ...baseTag, damageType1: 'special' },
   'def',
   undefined,
@@ -232,7 +226,6 @@ const sheet = register(
     key,
     dm,
     m1MaimOverride,
-    m1BloodBurialOverride,
     m4StarforgingOverride,
     m4ResonantOverride,
     m4TrialOverride
@@ -286,8 +279,16 @@ const sheet = register(
     true
   ),
   registerBuff('m1_gashBuildup_', m1_gashBuildup_),
-  registerBuff('m1_maim_dmg_', m1_maim_dmg_),
-  registerBuff('m1_maim_mult_display_', m1_maim_mult_display_),
+  // Instance-scoped extras (M1 Maim hit, M4 hits): listing-only, so they show
+  // in the UI without applying globally on top of the instance extras.
+  registerBuff('m1_maim_dmg_', m1_maim_dmg_, undefined, false, false),
+  registerBuff(
+    'm1_maim_mult_display_',
+    m1_maim_mult_display_,
+    undefined,
+    false,
+    false
+  ),
   registerBuff('m2_electric_resIgn_', m2_electric_resIgn_),
   registerBuff(
     'm2_skill_electric_resIgn_chain_',
@@ -305,8 +306,14 @@ const sheet = register(
     'm2_skill_electric_resIgn_assistFollowUp_',
     m2_skill_electric_resIgn['assistFollowUp']
   ),
-  registerBuff('m4_starforging_dmg_', m4_starforging_dmg_),
-  registerBuff('m4_resonant_dmg_', m4_resonant_dmg_),
-  registerBuff('m4_trial_dmg_', m4_trial_dmg_)
+  registerBuff(
+    'm4_starforging_dmg_',
+    m4_starforging_dmg_,
+    undefined,
+    false,
+    false
+  ),
+  registerBuff('m4_resonant_dmg_', m4_resonant_dmg_, undefined, false, false),
+  registerBuff('m4_trial_dmg_', m4_trial_dmg_, undefined, false, false)
 )
 export default sheet

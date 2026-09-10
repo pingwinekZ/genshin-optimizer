@@ -1,10 +1,15 @@
 {
-  "coreCond": "Core Passive",
-  "windEnergyCond": "Wind Energy",
+  "core_regen_header": "Energy Regen · ATK & Impact",
+  "contaminationSurgeCond": "Contamination / Cleanse · Team CRIT & Laceration",
   "ability_header": "Additional Ability",
-  "abilityCond": "Porcelloy Heart · DMG & Daze",
-  "m1Cond": "M1 · Versatile Attendant",
-  "m2Cond": "M2 · Clocking Out Myth",
-  "m4Cond": "M4 · R.I.P.",
-  "m6Cond": "M6 · Eternity and the Clockwork Doll"
+  "ability_stun_header": "Additional Ability · Stun DMG Multiplier",
+  "windsweptCond": "Windswept · Direct DMG Taken",
+  "exAnomalyCond": "EX Special · Anomaly Buildup",
+  "m1Cond": "M1 · All-Attribute RES Reduction",
+  "m1_crit_header": "M1 · CRIT DMG",
+  "m2_exDaze_header": "M2 · EX Special Daze",
+  "m2Cond": "M2 · Stun DMG Multiplier",
+  "m4_ult_header": "M4 · Ultimate DMG & Daze",
+  "m6_res_header": "M6 · Wind RES Ignore",
+  "m6Cond": "M6 · Afterecho Giant Windstorm"
 }

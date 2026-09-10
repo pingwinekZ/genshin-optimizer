@@ -163,11 +163,6 @@ const sheet = createBaseSheet(key, {
             formula.SpecialAttackBloodbloomOathCleavingGoldAndIron_2_dmg.tag,
         },
         {
-          title: ch('m1_maim_bloodBurial'),
-          fieldRef:
-            formula.SpecialAttackBloodbloomOathBloodBurialAssault_0_dmg.tag,
-        },
-        {
           title: ch('m1_maim_multiplier'),
           fieldRef: buff.m1_maim_mult_display_.tag,
         },
